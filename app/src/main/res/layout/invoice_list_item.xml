@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="3dp"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@+id/totalPrice"
+        android:id="@+id/topView"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/quantity"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:id="@+id/name"
+            android:layout_toEndOf="@+id/quantity"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_below="@+id/quantity"
+            android:id="@+id/unitPrice"
+            android:fontFamily="@font/baloo_regular"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/discountDetail"
+        android:fontFamily="@font/baloo_regular"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/topView"
+        android:textColor="@color/color_secondry"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/totalPrice"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

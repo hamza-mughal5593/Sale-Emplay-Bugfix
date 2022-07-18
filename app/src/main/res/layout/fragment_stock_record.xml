@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".ui.record.StockRecordFragment">
+
+    <LinearLayout
+        android:id="@+id/distributerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo_regular"
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:text="Distributer"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/distributerSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/productList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/distributerView"
+        android:layout_above="@+id/addStock"
+        android:divider="@color/transparent"
+        android:dividerHeight="7dp" />
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/addStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_btn_bg"
+        android:text="Add Issued Stock"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

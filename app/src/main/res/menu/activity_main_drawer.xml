@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashbaord"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_employees"
+            android:icon="@drawable/ic_customer"
+            android:visible="false"
+            android:title="Employee Management" />
+        <item
+            android:id="@+id/nav_attendence"
+            android:icon="@drawable/ic_fingerprint"
+            android:visible="false"
+            android:title="Attendence" />
+        <item
+            android:id="@+id/nav_attendence_history"
+            android:icon="@drawable/ic_fingerprint"
+            android:visible="false"
+            android:title="Attendence History" />
+        <item
+            android:id="@+id/nav_customer"
+            android:icon="@drawable/ic_customer"
+            android:visible="false"
+            android:title="Customer Management" />
+        <item
+            android:id="@+id/nav_approve"
+            android:icon="@drawable/ic_checked"
+            android:visible="false"
+            android:title="Approve Customer" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_orders"
+            android:visible="false"
+            android:title="Order Management" />
+        <item
+            android:id="@+id/nav_pickOrder"
+            android:icon="@drawable/ic_dropbox"
+            android:visible="false"
+            android:title="Pick Order" />
+        <item
+            android:id="@+id/nav_stock"
+            android:icon="@drawable/ic_dropbox"
+            android:visible="false"
+            android:title="Stock Management" />
+        <item
+            android:id="@+id/nav_stock_record"
+            android:visible="false"
+            android:icon="@drawable/ic_dropbox"
+            android:title="Stock Issue Record" />
+        <item
+            android:id="@+id/nav_target"
+            android:visible="false"
+            android:icon="@drawable/ic_target"
+            android:title="Sales Target" />
+        <item
+            android:id="@+id/nav_report"
+            android:icon="@drawable/ic_report"
+            android:visible="false"
+            android:title="Stock Report" />
+        <item
+            android:id="@+id/nav_salereport"
+            android:icon="@drawable/ic_report"
+            android:visible="false"
+            android:title="Sale Report" />
+        <item
+            android:id="@+id/nav_cash"
+            android:icon="@drawable/ic_cash"
+            android:visible="false"
+            android:title="Cash Received" />
+        <item
+            android:id="@+id/nav_profile"
+            android:visible="false"
+            android:icon="@drawable/ic_customer"
+            android:title="Profile" />
+        <item
+            android:icon="@color/transparent"
+            android:title="" />
+
+        <item
+            android:icon="@color/transparent"
+            android:title="" />
+
+    </group>
+</menu>

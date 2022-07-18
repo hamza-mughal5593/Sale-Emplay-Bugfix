@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/login_color_one"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="26dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="5dp"
+            android:layout_above="@+id/designation"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/nav_header_desc"
+            app:srcCompat="@drawable/deens_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#366573"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:id="@+id/name"
+            android:fontFamily="@font/baloo_medium"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="  Username"
+            android:layout_alignParentBottom="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <TextView
+            android:id="@+id/designation"
+            android:textColor="#ffffff"
+            android:layout_above="@+id/name"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:fontFamily="@font/baloo_medium"
+            android:layout_height="wrap_content"
+            android:text="Deen's Cheese" />
+
+    </RelativeLayout>
+
+</LinearLayout>

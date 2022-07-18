@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".SOInvoiceUpdate">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Update Invoice"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <!-- Nested Lists -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomView"
+        android:layout_below="@+id/headerView"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Total ProductS"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/productList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Invoice Added Products"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/invoiceProductList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <!-- Discount Rate, Amount -->
+        <LinearLayout
+            android:id="@+id/discountView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Offer Amount"
+                    android:textColor="@color/color_secondry" />
+
+                <TextView
+                    android:id="@+id/offerAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Tax"
+                    android:textColor="@color/color_secondry" />
+
+                <TextView
+                    android:id="@+id/discountAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Subtotal Grand, Amount -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/discountView"
+            android:layout_marginBottom="7dp"
+            android:id="@+id/amountsView"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Subtotal"
+                    android:textColor="@color/color_secondry" />
+
+                <TextView
+                    android:id="@+id/subtotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Grand Total"
+                    android:textColor="@color/color_secondry" />
+
+                <TextView
+                    android:id="@+id/grandAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/update"
+            android:layout_below="@+id/amountsView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_focusColor="@color/colorPrimary"
+            app:nb_text="Update Invoice"
+            app:nb_radius="25dp"
+            android:layout_marginTop="8dp"
+            android:padding="0dp"
+            android:layout_marginStart="5dp"
+            app:nb_textSize="12sp"
+            android:layout_marginEnd="5dp"
+            app:nb_textColor="#FFFFFF" />
+
+
+    </RelativeLayout>
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".ApprovedLimit">
+
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Approve Limit"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:layout_below="@+id/headerView"
+        android:layout_above="@+id/grantLimit"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/typeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/corner_bg"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo_regular"
+                    android:paddingStart="4dp"
+                    android:paddingTop="4dp"
+                    android:text="Payment Type"
+                    android:textColor="@color/black" />
+
+                <Spinner
+                    android:id="@+id/typeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:id="@+id/limitView"
+                android:layout_marginEnd="15dp"
+                android:layout_below="@+id/typeView"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/corner_bg"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo_regular"
+                    android:paddingStart="4dp"
+                    android:paddingTop="4dp"
+                    android:text="Limit (PKR)"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/amount"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    android:paddingStart="5dp"
+                    android:textColor="@color/color_secondry"
+                    android:background="@color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/totalProductTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/limitView"
+                android:layout_marginTop="5dp"
+                android:text="Approve Products"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/productList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_below="@+id/totalProductTitle"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/grantLimit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_btn_bg"
+        android:text="APPROVE &amp; SET PRICES, DISCOUNTS"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

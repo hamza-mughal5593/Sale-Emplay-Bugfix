@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/full_corner_bg"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:id="@+id/nameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <RelativeLayout
+                android:id="@+id/profile_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circle">
+
+                <TextView
+                    android:id="@+id/letter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textAllCaps="true"
+                    android:textSize="38sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/customerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/approvedIcon"
+                android:layout_toEndOf="@+id/profile_image"
+                android:fontFamily="@font/ubuntu_medium"
+                android:lines="1"
+                android:paddingEnd="5dp"
+                android:text="Customer Name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/approvedIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_checked" />
+
+            <TextView
+                android:id="@+id/areaAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/customerName"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/profile_image"
+                android:fontFamily="@font/baloo_medium"
+                android:paddingEnd="10dp"
+                android:textAllCaps="true"
+                android:textColor="@color/color_secondry"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/approved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/areaAddress"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@+id/profile_image"
+                android:fontFamily="@font/baloo_medium"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/ledger"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/nameView"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="8dp"
+            android:padding="0dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_focusColor="@color/colorPrimary"
+            app:nb_radius="25dp"
+            app:nb_text="    View Ledger    "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+        <ca.antonious.materialdaypicker.MaterialDayPicker
+            android:id="@+id/day_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ledger" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

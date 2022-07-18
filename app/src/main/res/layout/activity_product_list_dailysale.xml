@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentView"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".ProductListDailySale">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Daily Sale"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <!-- Search View -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/searchView"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/headerView"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/all_corner_grey"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/searchField"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/cancel"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:hint="Search a Product"
+                android:maxLines="1"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/line"
+                android:src="@drawable/ic_round_circle"
+                android:visibility="gone"
+                app:tint="@color/color_secondry" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/search"
+                android:background="@color/black" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_search" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomView"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:descendantFocusability="afterDescendants"
+        android:divider="@color/transparent"
+        android:dividerHeight="7dp"
+        android:focusable="false"
+        android:scrollbars="none" />
+
+    <RelativeLayout
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/remarks"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/all_corner_light_gray"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:hint="Remarks"
+            android:paddingStart="8dp"
+            android:textColor="@color/black" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/place"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/remarks"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:padding="0dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_focusColor="@color/colorPrimary"
+            app:nb_radius="25dp"
+            app:nb_text="Submit Daily Sale"
+            app:nb_textAllCaps="true"
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="14sp" />
+
+
+    </RelativeLayout>
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

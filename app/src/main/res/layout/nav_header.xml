@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_color_one"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/deens_logo" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/icon"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:id="@+id/placeholder"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_height="60dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@+id/placeholder"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/name"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16sp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/baloo_regular"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/designation"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/name"
+                    android:textStyle="bold"
+                    android:textColor="@color/logo_color"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

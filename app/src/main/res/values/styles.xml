@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TeamPicker">
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_maxVisibleItems">5</item>
+        <item name="vpv_textColor">@color/black</item>
+        <item name="vpv_textSize">18sp</item>
+        <item name="vpv_textTypeface">@font/baloo_regular</item>
+        <item name="vpv_divider">@drawable/teampicker_divider</item>
+        <item name="vpv_orientation">vertical</item>
+    </style>
+</resources>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".ui.customer.CustomerFragment">
+
+    <!-- SO Selection View -->
+    <LinearLayout
+        android:id="@+id/typeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottomButton"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!-- GM Spinner -->
+        <LinearLayout
+            android:id="@+id/gmView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="General Manager"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/gmSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+        <!-- ST Spinner -->
+        <LinearLayout
+            android:id="@+id/stView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Sale Team (ST)"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/stSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+        <!-- DM Spinner -->
+        <LinearLayout
+            android:id="@+id/dmView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Disturbers (DM)"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/dmSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+        <!-- SDM Spinner -->
+        <LinearLayout
+            android:id="@+id/sdmView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Sum Disturbers (SDM)"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/sdmSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+        <!-- SO Spinner -->
+        <LinearLayout
+            android:id="@+id/soView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Sale Officer"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/soSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- List View of Customers -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_above="@+id/bottomButton"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:id="@+id/customerListView"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/all_corner_grey"
+                android:padding="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/searchField"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/cancel"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/baloo_regular"
+                    android:hint="Search a Customer"
+                    android:maxLines="1"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/cancel"
+                    android:visibility="gone"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toLeftOf="@+id/line"
+                    android:src="@drawable/ic_round_circle"
+                    app:tint="@color/color_secondry" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:id="@+id/line"
+                    android:background="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toLeftOf="@+id/search"
+                    android:layout_height="35dp"/>
+
+                <ImageView
+                    android:id="@+id/search"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_search" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/listView"
+            android:divider="@color/transparent"
+            android:dividerHeight="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/bottomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/corner_btn_bg"
+        android:drawablePadding="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Get Customer List"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:visibility="visible"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <ImageButton
+        android:id="@+id/addCustomer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/round_button"
+        android:gravity="center"
+        android:src="@drawable/ic_add_employee"
+        android:textSize="30sp"
+        app:tint="@color/white" />
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

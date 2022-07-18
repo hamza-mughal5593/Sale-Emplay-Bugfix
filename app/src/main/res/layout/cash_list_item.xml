@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/circle"
+            android:padding="13dp"
+            android:src="@drawable/ic_bank"
+            app:tint="@color/color_secondry" />
+
+        <TextView
+            android:id="@+id/bankName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toLeftOf="@+id/amount"
+            android:layout_toEndOf="@+id/icon"
+            android:fontFamily="@font/baloo_medium"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/amount"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/baloo_medium"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/paymentDate"
+            android:layout_below="@+id/bankName"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:layout_toEndOf="@+id/icon"
+            android:textColor="@color/color_secondry"
+            android:fontFamily="@font/baloo_regular"
+            android:layout_height="wrap_content"/>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/chequeView"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/chequeNo"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/quantum_googred"
+            android:fontFamily="sans-serif"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/chequeDate"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"
+            android:layout_toEndOf="@+id/chequeNo"
+            android:textColor="@color/quantum_googred"
+            android:fontFamily="sans-serif"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_height="wrap_content">
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/update"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="4dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_drawableResource="@drawable/ic_edit_wh"
+            app:nb_focusColor="@color/color_primary"
+            app:nb_iconColor="@color/white"
+            app:nb_radius="20dp"
+            app:nb_text="  Update  "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/delete"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="4dp"
+            app:nb_backgroundColor="#FA6357"
+            app:nb_drawableResource="@drawable/ic_cancel_wh"
+            app:nb_focusColor="#FFAB00"
+            app:nb_iconColor="@color/white"
+            app:nb_radius="20dp"
+            app:nb_text="  Delete  "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/post"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="4dp"
+            app:nb_backgroundColor="#0091EA"
+            app:nb_drawableResource="@drawable/ic_tick_wh"
+            app:nb_focusColor="#00B8D4"
+            app:nb_iconColor="@color/white"
+            app:nb_radius="20dp"
+            app:nb_text="  Post  "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

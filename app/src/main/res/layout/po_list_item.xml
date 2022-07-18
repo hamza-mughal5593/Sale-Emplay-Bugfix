@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_bg"
+        android:padding="7dp">
+
+        <RelativeLayout
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/customerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toLeftOf="@+id/subtotal"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textColor="@color/color_secondry"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/areaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topView"
+            android:layout_marginTop="7dp"
+            android:layout_toLeftOf="@+id/post"
+            android:fontFamily="@font/baloo_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_alignBottom="@+id/areaName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="0dp"
+            android:paddingStart="5dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_drawableResource="@drawable/ic_check"
+            app:nb_focusColor="@color/color_primary"
+            app:nb_iconColor="@color/white"
+            app:nb_radius="5dp"
+            app:nb_text="  Post   "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/discountView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/areaName"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_toLeftOf="@+id/delete"
+                android:fontFamily="@font/baloo_regular"
+                android:textColor="@color/color_secondry"
+                android:textSize="16sp" />
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="0dp"
+                android:paddingStart="5dp"
+                app:nb_backgroundColor="#FA6357"
+                app:nb_drawableResource="@drawable/ic_cancel_wh"
+                app:nb_focusColor="#FFAB00"
+                app:nb_iconColor="@color/white"
+                app:nb_radius="5dp"
+                app:nb_text="  Delete  "
+                app:nb_textColor="#FFFFFF"
+                app:nb_textSize="12sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".DailySaleInvoiceUpdate">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Update Daily Sale"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <!-- Nested Lists -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomView"
+        android:layout_below="@+id/headerView"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Total ProductS"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/productList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Invoice Added Products"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/invoiceProductList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/remarks"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/all_corner_light_gray"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:hint="Remarks"
+            android:paddingStart="8dp"
+            android:textColor="@color/black" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/remarks"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:padding="0dp"
+            app:nb_backgroundColor="@color/color_secondry"
+            app:nb_focusColor="@color/colorPrimary"
+            app:nb_radius="25dp"
+            app:nb_text="Update Daily Sale"
+            app:nb_textAllCaps="true"
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+    </RelativeLayout>
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

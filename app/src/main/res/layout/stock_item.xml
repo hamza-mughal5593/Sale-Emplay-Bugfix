@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/topView"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/companyName"
+            android:textAlignment="textStart"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Sale Price (Editable)"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="@color/color_secondry"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/salePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:digits="0123456789"
+            android:background="@drawable/carton_bg"
+            android:paddingStart="7dp"
+            android:fontFamily="@font/baloo_regular"
+            android:hint="0 PKR"
+            android:inputType="numberDecimal"
+            android:padding="0dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/quantum_googred"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Product Unit"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:textColor="@color/color_secondry"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/baloo_regular"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Stock Date (Editable)"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="@color/color_secondry"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/stockDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/carton_bg"
+            android:paddingStart="7dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/baloo_regular"
+            android:hint="yyyy-mm-dd"
+            android:padding="0dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/quantum_googred"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+         android:layout_marginTop="2dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Quantity (Editable)"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="@color/color_secondry"
+            android:layout_height="wrap_content"/>
+
+         <EditText
+             android:id="@+id/quantity"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:background="@drawable/carton_bg"
+             android:paddingStart="7dp"
+             android:digits="0123456789"
+             android:fontFamily="@font/baloo_regular"
+             android:hint="0"
+             android:inputType="numberDecimal"
+             android:padding="0dp"
+             android:textAlignment="textStart"
+             android:textColor="@color/quantum_googred"
+             android:textSize="16sp" />
+
+     </LinearLayout>
+
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Cost Price (Editable)"
+            android:layout_weight="1"
+            android:textColor="@color/color_secondry"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"/>
+
+           <EditText
+               android:id="@+id/costPrice"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:background="@drawable/carton_bg"
+               android:paddingStart="7dp"
+               android:digits="0123456789"
+               android:fontFamily="@font/baloo_regular"
+               android:hint="0 PKR"
+               android:inputType="numberDecimal"
+               android:padding="0dp"
+               android:textAlignment="textStart"
+               android:textColor="@color/quantum_googred"
+               android:textSize="16sp" />
+
+       </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/issuedStockView"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/baloo_regular"
+            android:text="Issued Stock (Editable)"
+            android:layout_weight="1"
+            android:textColor="@color/color_secondry"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/issuedStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/carton_bg"
+            android:paddingStart="7dp"
+            android:digits="0123456789"
+            android:fontFamily="@font/baloo_regular"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            android:padding="0dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/quantum_googred"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

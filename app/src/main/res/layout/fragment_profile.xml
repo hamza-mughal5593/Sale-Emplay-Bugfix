@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:id="@+id/parentView"
+    android:background="@drawable/register_animation_colors"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Employee Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/employeeName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Username"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Password"
+                android:textColor="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/baloo_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/edit"
+                    android:inputType="textPassword"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:id="@+id/edit"
+                    android:padding="7dp"
+                    app:tint="@color/color_secondry"
+                    android:src="@drawable/ic_edit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="40dp"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Employee Code"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/employeeCode"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Phone no"
+                android:textColor="@color/black" />
+
+            <br.com.sapereaude.maskedEditText.MaskedEditText
+                android:id="@+id/phoneNo"
+                android:layout_width="match_parent"
+                android:editable="false"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:inputType="none"
+                android:clickable="false"
+                android:padding="6dp"
+                android:textColor="@color/color_secondry"
+                android:typeface="monospace"
+                app:allowed_chars="1234567890"
+                app:keep_hint="true"
+                app:mask="####-#######" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Branch Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/branchName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Department Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/departmentName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="Designation Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/designationName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/corner_bg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:text="User Type"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/userType"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

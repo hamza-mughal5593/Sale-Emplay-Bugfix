@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_bg"
+        android:padding="7dp">
+
+        <RelativeLayout
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/customerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toLeftOf="@+id/amount"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textColor="@color/color_secondry"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/saleOfficerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topView"
+            android:layout_marginTop="7dp"
+            android:layout_toLeftOf="@+id/showBill"
+            android:fontFamily="@font/baloo_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/showBill"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@+id/saleOfficerName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="0dp"
+            android:paddingStart="5dp"
+            app:nb_backgroundColor="#00BFA5"
+            app:nb_drawableResource="@drawable/ic_outline_print_24"
+            app:nb_focusColor="#00C853"
+            app:nb_iconColor="@color/white"
+            app:nb_radius="5dp"
+            app:nb_text="  Print  "
+            app:nb_textColor="#FFFFFF"
+            app:nb_textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/discountView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saleOfficerName"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tradeOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/trade_bg"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="7dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/discountAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tradeOffer"
+                android:background="@drawable/discount_bg"
+                android:fontFamily="@font/baloo_regular"
+                android:paddingStart="7dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/sortView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/discountAmount"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/checkmark"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_check_disabled"
+                    android:tag="0" />
+
+                <EditText
+                    android:id="@+id/order"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_toLeftOf="@+id/checkmark"
+                    android:background="@drawable/carton_bg"
+                    android:digits="123456789"
+                    android:fontFamily="@font/baloo_medium"
+                    android:hint="Order"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="0dp"
+                android:paddingStart="5dp"
+                android:visibility="gone"
+                app:nb_backgroundColor="#FA6357"
+                app:nb_drawableResource="@drawable/ic_cancel_wh"
+                app:nb_focusColor="#FFAB00"
+                app:nb_iconColor="@color/white"
+                app:nb_radius="5dp"
+                app:nb_text="  Delete  "
+                app:nb_textColor="#FFFFFF"
+                app:nb_textSize="12sp" />
+
+            <com.ornach.nobobutton.NoboButton
+                android:id="@+id/finish"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="0dp"
+                android:paddingStart="5dp"
+                android:visibility="gone"
+                app:nb_backgroundColor="#FA6357"
+                app:nb_drawableResource="@drawable/ic_cancel_wh"
+                app:nb_focusColor="#FFAB00"
+                app:nb_iconColor="@color/white"
+                app:nb_radius="5dp"
+                app:nb_text="  Finish  "
+                app:nb_textColor="#FFFFFF"
+                app:nb_textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

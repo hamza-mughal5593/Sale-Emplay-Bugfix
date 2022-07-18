@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout class="androidx.appcompat.app.AlertController$RecycleListView" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/register_animation_colors"
+    android:id="@+id/parentView"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/orderView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/dashboard_bg"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:drawableLeft="@drawable/ic_orders"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Assigned Orders"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/orderCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/loader"
+                    style="@style/SpinKitView.Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/white" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/monthTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/color_secondry"
+                android:fontFamily="@font/baloo_medium"
+                android:gravity="center_vertical"
+                android:padding="3dp"
+                android:text="Monthly Sales (PKR)"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+
+            <HorizontalScrollView
+                android:id="@+id/monthlyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <view
+                    android:id="@+id/monthlyGraph"
+                    class="im.dacer.androidcharts.LineView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center_horizontal" />
+
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/weekTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/color_secondry"
+                    android:fontFamily="@font/baloo_medium"
+                    android:gravity="center_vertical"
+                    android:padding="3dp"
+                    android:text="Weekly Sales (PKR)"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+                <com.hadiidbouk.charts.ChartProgressBar
+                    android:id="@+id/weeklyProgressBar"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="-30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hdBarCanBeClick="true"
+                    app:hdBarCanBeToggle="true"
+                    app:hdBarHeight="180dp"
+                    app:hdBarRadius="20dp"
+                    app:hdBarTitleColor="@color/bar_title_color"
+                    app:hdBarTitleMarginTop="9dp"
+                    app:hdBarTitleSelectedColor="@color/color_secondry"
+                    app:hdBarTitleTxtSize="16sp"
+                    app:hdBarWidth="20dp"
+                    app:hdEmptyColor="@color/empty"
+                    app:hdPinBackgroundColor="@color/pin_background"
+                    app:hdPinDrawable="@drawable/ic_info_window"
+                    app:hdPinMarginBottom="120dp"
+                    app:hdPinMarginEnd="22dp"
+                    app:hdPinPaddingBottom="5dp"
+                    app:hdPinTextColor="@color/white"
+                    app:hdPinTxtSize="14sp"
+                    app:hdProgressClickColor="@color/color_primary"
+                    app:hdProgressColor="@color/color_secondry"
+                    app:hdProgressDisableColor="@color/progress_disable" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

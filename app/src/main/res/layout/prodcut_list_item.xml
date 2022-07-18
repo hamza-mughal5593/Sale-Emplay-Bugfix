@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_bg">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="#efefef"
+            android:src="@drawable/fries" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/price"
+                android:fontFamily="@font/baloo_medium"
+                android:gravity="center_vertical"
+                android:paddingEnd="5dp"
+                android:textStyle="bold"
+                android:text="Deen's Cheese 6mm"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/name"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:text="250 PKR"
+                android:textColor="@color/quantum_googred"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/companyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginTop="3dp"
+                android:layout_toLeftOf="@+id/unit"
+                android:fontFamily="@font/baloo_medium"
+                android:paddingEnd="5dp"
+                android:text="Wola Foods"
+                android:textColor="@color/color_secondry"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_alignBaseline="@+id/companyName"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textColor="@color/quantum_googred" />
+
+            <TextView
+                android:id="@+id/offer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/companyName"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/baloo_medium"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

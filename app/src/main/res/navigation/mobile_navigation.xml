@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_dashboard">
+
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.deens.cheese.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_attendence"
+        android:name="com.deens.cheese.ui.attendance.AttendanceFragment"
+        android:label="Attendance"
+        tools:layout="@layout/fragment_attendence" />
+
+    <fragment
+        android:id="@+id/nav_attendence_history"
+        android:name="com.deens.cheese.ui.attendancehistory.AttendanceHistoryFragment"
+        android:label="Attendance History"
+        tools:layout="@layout/fragment_attendence_history" />
+
+    <fragment
+        android:id="@+id/nav_employees"
+        android:name="com.deens.cheese.ui.employees.EmployeeFragment"
+        android:label="Employees Management"
+        tools:layout="@layout/fragment_employees" />
+
+    <fragment
+        android:id="@+id/nav_customer"
+        android:name="com.deens.cheese.ui.customer.CustomerFragment"
+        android:label="Customer Management"
+        tools:layout="@layout/fragment_customer" />
+
+    <fragment
+        android:id="@+id/nav_approve"
+        android:name="com.deens.cheese.ui.approve.ApproveFragment"
+        android:label="Approve Customer"
+        tools:layout="@layout/fragment_approve" />
+
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.deens.cheese.ui.order.OrderFragment"
+        android:label="Orders Management"
+        tools:layout="@layout/fragment_order" />
+
+    <fragment
+        android:id="@+id/nav_stock"
+        android:name="com.deens.cheese.ui.stock.StockFragment"
+        android:label="Stock Management"
+        tools:layout="@layout/fragment_stock" />
+
+    <fragment
+        android:id="@+id/nav_stock_record"
+        android:name="com.deens.cheese.ui.record.StockRecordFragment"
+        android:label="Stock Issue Record"
+        tools:layout="@layout/fragment_stock_record" />
+
+    <fragment
+        android:id="@+id/nav_pickOrder"
+        android:name="com.deens.cheese.ui.pickcartons.PickCartonFragment"
+        android:label="Pick Order"
+        tools:layout="@layout/fragment_pickorder" />
+
+    <fragment
+        android:id="@+id/nav_target"
+        android:name="com.deens.cheese.ui.target.TargetFragment"
+        android:label="Sales Target"
+        tools:layout="@layout/fragment_target" />
+
+    <fragment
+        android:id="@+id/nav_report"
+        android:name="com.deens.cheese.ui.report.ReportFragment"
+        android:label="Stock Report"
+        tools:layout="@layout/fragment_report" />
+
+    <fragment
+        android:id="@+id/nav_salereport"
+        android:name="com.deens.cheese.ui.salereport.SaleReportFragment"
+        android:label="Sale Report"
+        tools:layout="@layout/fragment_salereport" />
+
+    <fragment
+        android:id="@+id/nav_cash"
+        android:name="com.deens.cheese.ui.cash.CashFragment"
+        android:label="Cash Received"
+        tools:layout="@layout/fragment_cash" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.deens.cheese.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

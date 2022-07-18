@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.deens.cheese">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_deen"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_deen_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SalesOfficer"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ViewImages"
+            android:exported="false" />
+        <activity
+            android:name=".POInvoiceUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".DailySaleInvoiceUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListPO"
+            android:exported="false" />
+        <activity
+            android:name=".MappedCustomerView"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceMap"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceHistory"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentList"
+            android:exported="true" />
+        <activity
+            android:name=".SaleTargetView"
+            android:exported="true" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="true" />
+        <activity
+            android:name=".ReceiveCash"
+            android:exported="true" />
+        <activity
+            android:name=".TargetList"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateStock"
+            android:exported="true" />
+        <activity
+            android:name=".SOInvoiceUpdate"
+            android:exported="true" />
+        <activity
+            android:name=".AssignedOrders"
+            android:exported="true" />
+        <activity
+            android:name=".MapPins"
+            android:exported="true" />
+        <activity
+            android:name=".InvoiceDetail"
+            android:exported="true" />
+        <activity
+            android:name=".OrdersSO"
+            android:exported="true" />
+        <activity
+            android:name=".ProductList"
+            android:exported="true" />
+        <activity
+            android:name=".ApprovedLimit"
+            android:exported="true" />
+        <activity
+            android:name=".EditCustomer"
+            android:exported="true" />
+        <activity
+            android:name=".AddCustomer"
+            android:exported="true" />
+        <activity
+            android:name=".EditEmployee"
+            android:exported="true" />
+        <activity
+            android:name=".ProductListDailySale"
+            android:exported="true" />
+        <activity
+            android:name=".Home"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SalesOfficer.NoActionBar" />
+        <activity
+            android:name=".AddEmployee"
+            android:exported="true" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".UserValidate"
+            android:exported="true" />
+        <activity
+            android:name=".Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="com.deens.cheese.GenericFileProvider"
+            android:authorities="${applicationId}.com.deens.cheese.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAp-6FxXs0vnecG02_f700koq9Z7Q-FhL0" />
+    </application>
+
+</manifest>

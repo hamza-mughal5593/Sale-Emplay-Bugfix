@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="7dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/topView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/quantityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="0x"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/quantityTitle"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/totalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/baloo_medium"
+            android:textColor="@color/color_secondry"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <RelativeLayout
+            android:id="@+id/priceView"
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalAmount">
+
+            <TextView
+                android:id="@+id/salePrice"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_regular"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/salePrice"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/salePrice"
+                android:fontFamily="@font/baloo_regular"
+                android:textColor="@color/black"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/salePrice"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/baloo_regular"
+                android:textColor="@color/quantum_googred"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <com.ornach.nobobutton.NoboButton
+                    android:id="@+id/add"
+                    android:layout_width="45dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:padding="0dp"
+                    app:nb_backgroundColor="@color/color_secondry"
+                    app:nb_focusColor="@color/colorPrimary"
+                    app:nb_radius="25dp"
+                    app:nb_text="Add"
+                    app:nb_textColor="#FFFFFF"
+                    app:nb_textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/quantity"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_toEndOf="@+id/add"
+                    android:background="@drawable/carton_bg"
+                    android:padding="0dp"
+                    android:hint="0"
+                    android:digits="0123456789"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/baloo_regular"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/black"/>
+
+                <com.ornach.nobobutton.NoboButton
+                    android:id="@+id/tradeOffer"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    app:nb_backgroundColor="#FF6D00"
+                    app:nb_focusColor="@color/colorPrimary"
+                    app:nb_text="Tr. Offer"
+                    android:padding="0dp"
+                    app:nb_textSize="12sp"
+                    android:visibility="gone"
+                    app:nb_radius="25dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:nb_textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/offerAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/carton_bg"
+                    android:padding="0dp"
+                    android:hint="0 PKR"
+                    android:digits="0123456789"
+                    android:visibility="gone"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/baloo_regular"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/baloo_regular"
+        android:textColor="@color/color_secondry" />
+
+    <TextView
+        android:id="@+id/offerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/baloo_regular"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+
+
+</RelativeLayout>

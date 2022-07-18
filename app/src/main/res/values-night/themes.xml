@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SalesOfficer" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#66C6D6</item>
+        <item name="colorPrimaryVariant">#23A2B3</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#66C6D6</item>
+        <item name="colorSecondaryVariant">#23A2B3</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

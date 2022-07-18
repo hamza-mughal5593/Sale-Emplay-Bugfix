@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".UserValidate">
+
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Add User"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_previous" />
+
+        <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segmentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@+id/previous"
+            android:orientation="horizontal"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="12dp">
+
+            <RadioButton
+                android:id="@+id/type"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:checked="true"
+                android:clickable="false"
+                android:text=" Type " />
+
+            <RadioButton
+                android:id="@+id/heirarchy"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:clickable="false"
+                android:text=" Heirarchy " />
+
+            <RadioButton
+                android:id="@+id/info"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:clickable="false"
+                android:text=" Info " />
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/segmentView"
+            android:background="@drawable/ic_forward" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/addUser"
+        android:layout_below="@+id/navigationView"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- View 1. Type View -->
+            <LinearLayout
+                android:id="@+id/typeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Employee Type"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/typeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- View 2. Hierarchy View -->
+            <LinearLayout
+                android:id="@+id/hierarchyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <!-- GM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/gmView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="General Manager"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/gmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- ST Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/stView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sale Team (ST)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/stSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- DM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/dmView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Disturbers (DM)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/dmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- SDM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/sdmView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sum Disturbers (SDM)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/sdmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- SO Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/soView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sale Officer"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/soSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- View 3. Info View -->
+            <LinearLayout
+                android:id="@+id/infoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Employee Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Employee Name"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/employeeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Father Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Employee Father Name"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/fatherName"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_secondry"
+                        android:paddingStart="4dp"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- CNIC -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="CNIC"
+                        android:textColor="@color/black" />
+
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:id="@+id/cnic"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:inputType="number"
+                        android:padding="6dp"
+                        android:textColor="@color/color_secondry"
+                        android:typeface="monospace"
+                        app:allowed_chars="1234567890"
+                        app:keep_hint="true"
+                        app:mask="#####-#######-#" />
+
+                </LinearLayout>
+
+                <!-- DOB -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="DOB"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/dob"
+                        android:layout_width="match_parent"
+                        android:paddingStart="4dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Gender -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Gender"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/genderSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- City -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="City"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/citySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Address -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Employee Address"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/employeeAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Contact No -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Contact No."
+                        android:textColor="@color/black" />
+
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:id="@+id/contactNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:inputType="number"
+                        android:padding="6dp"
+                        android:textColor="@color/color_secondry"
+                        android:typeface="monospace"
+                        app:allowed_chars="1234567890"
+                        app:keep_hint="true"
+                        app:mask="####-#######" />
+
+                </LinearLayout>
+
+                <!-- Contact No 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Contact No. 2 (Optional)"
+                        android:textColor="@color/black" />
+
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:id="@+id/contactNo2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:inputType="number"
+                        android:padding="6dp"
+                        android:textColor="@color/color_secondry"
+                        android:typeface="monospace"
+                        app:allowed_chars="1234567890"
+                        app:keep_hint="true"
+                        app:mask="####-#######" />
+
+                </LinearLayout>
+
+                <!-- Branch Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Branch Name"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/branchSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Department Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Department Name"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/departmentSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Designation Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Designation Name"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/designationSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- DOJ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="DOJ"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/doj"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:paddingStart="4dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Status Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Employee Status"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Remarks  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Remarks"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/remarks"
+                        android:layout_width="match_parent"
+                        android:paddingStart="4dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/addUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_btn_bg"
+        android:text="Add New User"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:id="@+id/parentView"
+    android:background="@drawable/register_animation_colors"
+    android:layout_height="match_parent"
+    tools:context=".ui.order.OrderFragment">
+
+    <RelativeLayout
+        android:id="@+id/topView"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segmentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="12dp">
+
+            <RadioButton
+                android:id="@+id/button1"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:checked="true"
+                android:backgroundTint="@color/color_secondry"
+                android:text=" Not Assigned " />
+
+            <RadioButton
+                android:id="@+id/button2"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:text=" Assigned " />
+
+            <RadioButton
+                android:id="@+id/button3"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:text=" Delivered " />
+
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/assignPost"
+        android:layout_below="@+id/topView"
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:scrollbars="none" />
+
+    <!-- Salesman Selection View -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_above="@+id/assignPost"
+        android:background="#B3000000"
+        android:visibility="gone"
+        android:id="@+id/salesmanSelectionView"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/all_corner_white"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textSize="20sp"
+                android:id="@+id/title"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:text="Select Salesman"
+                android:textAlignment="center"
+                android:background="@color/color_secondry"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"/>
+
+            <com.paulrybitskyi.valuepicker.ValuePickerView
+                android:id="@+id/salemanPicker"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TeamPicker"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="2"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_below="@+id/salemanPicker"
+                android:layout_height="wrap_content">
+
+                <com.skydoves.elasticviews.ElasticButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cancelButton"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/all_corner_cancel"
+                    android:drawableStart="@drawable/ic_cancel"
+                    android:drawableTint="@color/white"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:text="Cancel"
+                    android:textColor="@color/white" />
+
+                <com.skydoves.elasticviews.ElasticButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/assignButton"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/all_corner_assign"
+                    android:drawableStart="@drawable/ic_cancel"
+                    android:drawableTint="@color/white"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:text="Assign"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/assignPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_btn_bg"
+        android:text="Assign Order"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:layout_toLeftOf="@+id/addOrder"
+        android:visibility="gone"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <ImageButton
+        android:id="@+id/addOrder"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/round_button"
+        android:gravity="center"
+        android:src="@drawable/ic_orders"
+        android:textSize="30sp"
+        app:tint="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

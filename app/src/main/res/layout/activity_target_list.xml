@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".TargetList">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Sales Target List"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerView"
+        android:divider="@color/transparent"
+        android:dividerHeight="7dp"
+        android:scrollbars="none" />
+
+    <RelativeLayout
+        android:id="@+id/centerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:background="#1A000000">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:background="@color/white"
+            android:id="@+id/inputView"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_above="@+id/inputView"
+                android:text="Update Target"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:fontFamily="@font/baloo_regular"
+                android:background="@color/color_secondry"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/amountView"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:text="Sale Target (KG)"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/amount"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/carton_bg"
+                    android:fontFamily="@font/baloo_regular"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:padding="4dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="7dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:text="Target Starts: "
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/carton_bg"
+                    android:fontFamily="@font/baloo_regular"
+                    android:hint="yyyy-MM-dd"
+                    android:padding="4dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="7dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:text="Target Ends: "
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp" />
+
+                <TextView
+
+                    android:id="@+id/endDate"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/carton_bg"
+                    android:fontFamily="@font/baloo_regular"
+                    android:hint="yyyy-MM-dd"
+                    android:padding="4dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/color_secondry"
+                android:text="Update"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/addTarget"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/round_button"
+        android:gravity="center"
+        android:src="@drawable/ic_add"
+        android:textSize="30sp"
+        app:tint="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/soName"
+        android:textColor="@color/color_secondry"
+        android:fontFamily="@font/baloo_regular"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/target"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/baloo_regular"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/startDate"
+        android:layout_below="@+id/soName"
+        android:textColor="@color/quantum_googgreen"
+        android:fontFamily="@font/baloo_regular"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/endDate"
+        android:layout_below="@+id/soName"
+        android:textColor="@color/quantum_googred"
+        android:fontFamily="@font/baloo_regular"
+        android:textSize="16sp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

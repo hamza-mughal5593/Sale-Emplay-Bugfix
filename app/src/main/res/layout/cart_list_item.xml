@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/parentView"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/productName"
+        android:textSize="16sp"
+        android:layout_margin="4dp"
+        android:textColor="#DD2C00"
+        android:fontFamily="@font/ubuntu_medium"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productName"
+        android:orientation="horizontal"
+        android:id="@+id/titles"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/salePrice"
+            android:background="@drawable/all_corner_black"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_black"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:id="@+id/quantity"
+            android:padding="3dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_black"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:padding="3dp"
+            android:id="@+id/tradeOffer"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_black"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:padding="3dp"
+            android:id="@+id/offerAmount"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/all_corner_black"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:id="@+id/total"
+            android:textColor="@color/quantum_googred" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/values"
+        android:layout_below="@+id/titles"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_mix"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Price"
+            android:padding="3dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tr. Offer"
+            android:background="@drawable/all_corner_mix"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_mix"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Off. Amt."
+            android:padding="3dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_corner_mix"
+            android:fontFamily="sans-serif"
+            android:text="Quantity"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/all_corner_mix"
+            android:fontFamily="sans-serif"
+            android:text="Total"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textColor="@color/quantum_googred600" />
+
+    </LinearLayout>
+
+</RelativeLayout>

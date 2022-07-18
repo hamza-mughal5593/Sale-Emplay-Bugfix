@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".AddCustomer">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Add Customer"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <!-- Navigation View -->
+    <RelativeLayout
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_previous" />
+
+        <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segmentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@+id/previous"
+            android:orientation="horizontal"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="12dp">
+
+            <RadioButton
+                android:id="@+id/type"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:checked="true"
+                android:clickable="false"
+                android:text=" SO " />
+
+            <RadioButton
+                android:id="@+id/location"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:clickable="false"
+                android:text=" Map " />
+
+            <RadioButton
+                android:id="@+id/info"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/color_secondry"
+                android:clickable="false"
+                android:text=" Info " />
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/segmentView"
+            android:background="@drawable/ic_forward" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/addCustomer"
+        android:layout_below="@+id/navigationView"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- View 1. SO Selection -->
+            <LinearLayout
+                android:id="@+id/typeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- GM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    android:id="@+id/gmView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="General Manager"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/gmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- ST Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    android:id="@+id/stView"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sale Team (ST)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/stSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- DM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/dmView"
+                    android:visibility="gone"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Disturbers (DM)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/dmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- SDM Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/sdmView"
+                    android:visibility="gone"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sum Disturbers (SDM)"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/sdmSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- SO Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/soView"
+                    android:visibility="gone"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Sale Officer"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/soSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- View 2. Map Location -->
+            <LinearLayout
+                android:id="@+id/locationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:id="@+id/mapView"
+                    android:layout_height="wrap_content">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:id="@+id/mapMarker"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_map_pin"
+                        android:layout_height="35dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:weightSum="2"
+                        android:layout_margin="10dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_toLeftOf="@+id/gotoLocation"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:id="@+id/latitude"
+                            android:layout_weight="1"
+                            android:textColor="@color/color_secondry"
+                            android:textSize="16sp"
+                            android:background="@drawable/corner_bg"
+                            android:gravity="center_vertical"
+                            android:paddingStart="5dp"
+                            android:layout_marginEnd="7dp"
+                            android:digits="0123456789."
+                            android:inputType="numberSigned"
+                            android:drawablePadding="10dp"
+                            android:paddingEnd="5dp"
+                            android:singleLine="true"
+                            android:drawableLeft="@drawable/ic_latitude"
+                            android:fontFamily="@font/baloo_medium"
+                            android:layout_height="45dp"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:id="@+id/longitude"
+                            android:layout_weight="1"
+                            android:textColor="@color/color_secondry"
+                            android:textSize="16sp"
+                            android:singleLine="true"
+                            android:digits="0123456789."
+                            android:background="@drawable/corner_bg"
+                            android:gravity="center_vertical"
+                            android:paddingStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:inputType="numberSigned"
+                            android:drawablePadding="10dp"
+                            android:paddingEnd="5dp"
+                            android:drawableLeft="@drawable/ic_longitude"
+                            android:fontFamily="@font/baloo_medium"
+                            android:layout_height="45dp"/>
+
+                    </LinearLayout>
+
+                    <com.skydoves.elasticviews.ElasticButton
+                        android:id="@+id/gotoLocation"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/corner_btn_bg"
+                        android:text="Go"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:layout_marginEnd="10dp"
+                        android:visibility="visible"
+                        app:button_cornerRadius="10dp"
+                        app:button_duration="250"
+                        app:button_scale="0.87" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/customerLocation"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@drawable/corner_bg"
+                    android:gravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:layout_marginStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_map_pin"
+                    android:fontFamily="@font/baloo_medium"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <!-- View 3. Info -->
+            <LinearLayout
+                android:id="@+id/infoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Customer Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Customer Name"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/customerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- City -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="City"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/citySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Area -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Area"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/area"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Address -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Address"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Contact No -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Contact No."
+                        android:textColor="@color/black" />
+
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:id="@+id/contactNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:inputType="number"
+                        android:padding="6dp"
+                        android:textColor="@color/color_secondry"
+                        android:typeface="monospace"
+                        app:allowed_chars="1234567890"
+                        app:keep_hint="true"
+                        app:mask="####-#######" />
+
+                </LinearLayout>
+
+                <!-- Contact No 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Contact No. 2 (Optional)"
+                        android:textColor="@color/black" />
+
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:id="@+id/contactNo2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:inputType="number"
+                        android:padding="6dp"
+                        android:textColor="@color/color_secondry"
+                        android:typeface="monospace"
+                        app:allowed_chars="1234567890"
+                        app:keep_hint="true"
+                        app:mask="####-#######" />
+
+                </LinearLayout>
+
+                <!-- Registration Date -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Registration Date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/dor"
+                        android:layout_width="match_parent"
+                        android:paddingStart="4dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Opening Balance -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Opening Balance"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/openingBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:digits="0123456789"
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- Visit Day -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Visit Day"
+                        android:textColor="@color/black" />
+
+                    <Spinner
+                        android:id="@+id/daySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+                <!-- Is Registered -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Is Tax Register"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/isTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp" />
+
+                </LinearLayout>
+
+                <!-- NTN no -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="NTN No"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/ntnNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <!-- NTN no -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="STN No"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/stnNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/color_secondry"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/addCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_btn_bg"
+        android:text="Add New Customer"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

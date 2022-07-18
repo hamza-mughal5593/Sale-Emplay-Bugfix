@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentView"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".AttendanceHistory">
+
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Attendance List"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/employeeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerView"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/corner_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo_regular"
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:text="Employee Name"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/employeeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:id="@+id/dateView"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/employeeView"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/corner_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo_regular"
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:text="Attendance Date"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/date"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_regular"
+            android:paddingStart="5dp"
+            android:textColor="@color/color_secondry"
+            android:background="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+    <com.skydoves.elasticviews.ElasticButton
+        android:id="@+id/bottomButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/dateView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/corner_btn_bg"
+        android:drawablePadding="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Get Attendance List"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:visibility="visible"
+        app:button_cornerRadius="4dp"
+        app:button_duration="250"
+        app:button_scale="0.87" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bottomButton" />
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

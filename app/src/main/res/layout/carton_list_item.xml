@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="7dp">
+
+    <RelativeLayout
+        android:id="@+id/nameView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text=""
+            android:textColor="@color/quantum_googred"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/quantityView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/nameView"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/assignedQuantityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Assigned Quantity"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/baloo_medium"
+            android:layout_toEndOf="@+id/assignedQuantityTitle"
+            android:text="/ Picked Quantity"
+            android:textAllCaps="true"
+            android:textColor="@color/color_secondry"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/assignedQuantityCtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pickedQuantityCtn"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Cartons - 0"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/pickedQuantityCtn"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/assignedQuantityTitle"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/assignedQuantityCtn"
+            android:background="@drawable/carton_bg"
+            android:digits="0123456789"
+            android:fontFamily="@font/baloo_medium"
+            android:hint="0"
+            android:inputType="numberDecimal|numberSigned"
+            android:textAlignment="center"
+            android:textColor="@color/color_secondry"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/assignedQuantityPkt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pickedQuantityCtn"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/pickedQuantityCtn"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Packets - 0"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/pickedQuantityPkt"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/assignedQuantityTitle"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/assignedQuantityPkt"
+            android:background="@drawable/carton_bg"
+            android:digits="0123456789"
+            android:hint="0"
+            android:fontFamily="@font/baloo_medium"
+            android:inputType="numberDecimal|numberSigned"
+            android:textAlignment="center"
+            android:textColor="@color/color_secondry"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/quantityView"
+        android:layout_alignEnd="@+id/quantityView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:max="100"
+        android:progress="0"
+        android:textAlignment="center" />
+
+</RelativeLayout>

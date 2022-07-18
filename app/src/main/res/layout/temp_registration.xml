@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/registrationForm"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_below="@+id/title"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/usernameTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Username"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@+id/usernameTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/username"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/passwordTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/passwordTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:inputType="textPassword"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/passwordTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Employee Name"
+            android:padding="10dp"
+            android:id="@+id/empNameTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/employeeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/empNameTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/empNameTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fatherNameTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Father Name"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/fatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/fatherNameTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/fatherNameTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/typeTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Emp. Type"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/typeTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/type"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="CNIC"
+            android:padding="10dp"
+            android:id="@+id/cnicTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/cnic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/cnicTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:inputType="number"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry"
+            android:typeface="monospace"
+            app:allowed_chars="1234567890"
+            app:keep_hint="true"
+            app:mask="#####-#######-#" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/cnicTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dobTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="DOB"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/dobTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/dobTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Gender"
+            android:padding="10dp"
+            android:id="@+id/genderTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/genderTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/genderTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cityTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Emp. City"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/cityTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/city"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Address"
+            android:padding="10dp"
+            android:id="@+id/addressTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/addressTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/addressTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/contactTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Contact 1"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/contactTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:inputType="number"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry"
+            android:typeface="monospace"
+            app:allowed_chars="1234567890"
+            app:keep_hint="true"
+            app:mask="####-#######" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/contactTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/contact2Title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Contact 2 (Opt)"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/contact2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/contact2Title"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:inputType="number"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry"
+            android:typeface="monospace"
+            app:allowed_chars="1234567890"
+            app:keep_hint="true"
+            app:mask="####-#######" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/contact2Title"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/branchTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Branch"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/branch"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/branchTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/branchTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Department"
+            android:padding="10dp"
+            android:id="@+id/departTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/department"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/departTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/departTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Designation"
+            android:padding="10dp"
+            android:id="@+id/desigTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/designation"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/desigTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/desigTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dojTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Joining Date"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/doj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/dojTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/dojTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="120dp"
+            android:text="Emp. Status"
+            android:padding="10dp"
+            android:id="@+id/statusTitle"
+            android:background="#F7F7F7"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/statusTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/statusTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/remarksTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Remarks"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/remarksTitle"
+            android:background="@color/transparent"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/remarksTitle"
+            android:background="#eeeeee"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/gmTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="GM"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/gm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/gmTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/gmTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/rsmTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="RSM"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/rsm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/rsmTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rsmTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/asmTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="ASM"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/asm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/asmTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/asmTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tsmTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="TSM"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/tsm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/tsmTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tsmTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/soTitle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#F7F7F7"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="SO"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/so"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/soTitle"
+            android:fontFamily="@font/baloo_regular"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_secondry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/soTitle"
+            android:background="#eeeeee" />
+
+    </RelativeLayout>
+
+</LinearLayout>

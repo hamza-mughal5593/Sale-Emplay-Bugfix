@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/parentView"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_animation_colors"
+    tools:context=".SaleTargetView">
+
+    <!-- Header View -->
+    <RelativeLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/baloo_medium"
+            android:text="Sale Target Detail"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/headerView"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Month"
+                android:id="@+id/month"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/fromDate"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/toDate"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@+id/fromDate"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/saleTarget"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="3dp"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:text="Days  "
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Sale Target"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/totalTarget"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:layout_toLeftOf="@+id/totalDays"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/totalDays"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/carton_bg"
+                    android:padding="3dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/baloo_medium" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Achieved Target"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/achieveTarget"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:layout_toLeftOf="@+id/achieveDays"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/achieveDays"
+                    android:padding="3dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Remianing Target"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/remainingTarget"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:layout_toLeftOf="@+id/remainingDays"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/remainingDays"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="3dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/ic_logo_background"
+            android:layout_height="1dp">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Pending Target"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/pendingTarget"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Current Target Ratio"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_medium"
+                    android:id="@+id/currentRatio"
+                    android:textAlignment="center"
+                    android:padding="3dp"
+                    android:textSize="18sp"
+                    android:background="@drawable/carton_bg"
+                    android:textColor="@color/color_secondry"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Required Target Ratio"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/requiredRatio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/carton_bg"
+                    android:padding="3dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/baloo_medium" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="7dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Remarks"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/baloo_medium"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/carton_bg"
+                    android:fontFamily="@font/baloo_medium"
+                    android:padding="3dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="18sp" />
+                
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="#1A000000"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
