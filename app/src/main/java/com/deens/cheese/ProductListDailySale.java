@@ -4,6 +4,7 @@ import static com.deens.cheese.GlobalVariable.API_KEY;
 import static com.deens.cheese.GlobalVariable.KEY_NAME;
 import static com.deens.cheese.GlobalVariable.URL;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -176,7 +177,7 @@ public class ProductListDailySale extends AppCompatActivity {
         String json = preferences.getString("User", "");
         userClass = gson.fromJson(json, UserClass.class);
     }
-
+    OrderProductAdapterModified adapter;
     private class GetProducts extends AsyncTask<Void, Void, Void> {
 
         String methodName = "Invoice/GetProductListByCustomer?";
@@ -224,7 +225,7 @@ public class ProductListDailySale extends AppCompatActivity {
                     if (products.size() > 0) {
                         LinearLayoutManager LayoutManager = new LinearLayoutManager(ProductListDailySale.this);
                         listView.setLayoutManager(LayoutManager);
-                        OrderProductAdapterModified adapter = new OrderProductAdapterModified(products, ProductListDailySale.this, new OrderProductAdapterModified.AdapterCallback() {
+                        adapter = new OrderProductAdapterModified(products, ProductListDailySale.this, new OrderProductAdapterModified.AdapterCallback() {
                             @Override
                             public void add_data(int pos, View holder) {
                                 quantityAdditionDialog(pos,holder);
@@ -590,6 +591,7 @@ public class ProductListDailySale extends AppCompatActivity {
         return null;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void quantityAdditionDialog(int index, View holder) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProductListDailySale.this);
         LayoutInflater in = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -606,7 +608,7 @@ public class ProductListDailySale extends AppCompatActivity {
         });
 
         add.setOnClickListener(view -> {
-            View listItem = getViewByPosition(index, listView);
+//            View listItem = getViewByPosition(index, listView);
             TextView quantityLabel = holder.findViewById(R.id.quantityTitle);
             TextView totalAmount = holder.findViewById(R.id.totalAmount);
             if (!quantity.getText().toString().trim().equals("")) {
@@ -614,15 +616,19 @@ public class ProductListDailySale extends AppCompatActivity {
                     int previousQuantity = products.get(index).getQuantity();
 
                     if ((previousQuantity + Integer.parseInt(quantity.getText().toString().trim())) > -1) {
-                        products.get(index).setQuantity(previousQuantity +
-                                Integer.parseInt(quantity.getText().toString().trim()));
-                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
+
+                        products.get(index).setQuantity(previousQuantity + Integer.parseInt(quantity.getText().toString().trim()));
+//                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
                         quantity.setText("");
-                        totalAmount.setText((products.get(index).getQuantity() *
-                                (products.get(index).getProductSalaPrice().intValue()
-                                        - products.get(index).getOfferAmount())) + " PKR");
+//                        totalAmount.setText((products.get(index).getQuantity() *
+//                                (products.get(index).getProductSalaPrice().intValue()
+//                                        - products.get(index).getOfferAmount())) + " PKR");
+//adapter.notifyDataSetChanged();
+                        adapter.notifyItemChanged(index);
+
                     }
                 } catch (NumberFormatException ex) {
+                    Toast.makeText(this, "NumberFormatException", Toast.LENGTH_SHORT).show();
                     ex.printStackTrace();
                 }
             }

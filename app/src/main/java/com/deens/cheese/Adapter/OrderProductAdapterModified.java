@@ -24,7 +24,6 @@ public class OrderProductAdapterModified extends RecyclerView.Adapter<OrderProdu
     private AdapterCallback mAdapterCallback;
 
 
-
     public OrderProductAdapterModified(ArrayList<SOProductClass> data, Context context, OrderProductAdapterModified.AdapterCallback mAdapterCallback) {
         this.dataSet = data;
         this.mContext = context;
@@ -38,18 +37,11 @@ public class OrderProductAdapterModified extends RecyclerView.Adapter<OrderProdu
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull MyHolderImage holder, @SuppressLint("RecyclerView") int position) {
 
 
-
-
-
-
-
         SOProductClass dataModel = dataSet.get(position);
-
 
 
         holder.name.setText(dataModel.getProductName());
@@ -60,17 +52,24 @@ public class OrderProductAdapterModified extends RecyclerView.Adapter<OrderProdu
         holder.unit.setText(" (Unit: " + dataModel.getProductUnit() + ")");
 
 
+        holder.quantityTitle.setText(dataModel.getQuantity() + "x");
+
+        if (dataModel.getQuantity() != 0)
+            holder.totalAmount.setText((dataModel.getQuantity() *
+                    (dataModel.getProductSalaPrice().intValue()
+                            - dataModel.getOfferAmount())) + " PKR");
+
 
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapterCallback.add_data(position,holder.itemView);
+                mAdapterCallback.add_data(position, holder.itemView);
             }
         });
         holder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapterCallback.minus_data(position,holder.itemView);
+                mAdapterCallback.minus_data(position, holder.itemView);
             }
         });
     }
@@ -119,6 +118,7 @@ public class OrderProductAdapterModified extends RecyclerView.Adapter<OrderProdu
 
     public interface AdapterCallback {
         void add_data(int pos, View holder);
+
         void minus_data(int pos, View holder);
     }
 }

@@ -6,10 +6,12 @@
         <entry key="..\:/Users/hamza/OneDrive/Desktop/New folder/CheeseVendorSideMenu/app/src/main/res/layout/activity_product_list_dailysale.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hamza/OneDrive/Desktop/New folder/CheeseVendorSideMenu/app/src/main/res/layout/activity_product_list_po.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hamza/OneDrive/Desktop/New folder/CheeseVendorSideMenu/app/src/main/res/layout/order_product_item.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/fragment_attendence.xml" value="0.2907692307692308" />
+        <entry key="app/src/main/res/layout/order_product_item.xml" value="0.2907692307692308" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

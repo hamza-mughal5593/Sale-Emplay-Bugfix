@@ -772,13 +772,10 @@ public class AttendanceFragment extends Fragment implements
     }
 
     private void imageUpload() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         try {
-            startActivityForResult(
-                    Intent.createChooser(intent, "Select a File to Upload"),
-                    UPLOAD_IMAGE_REQUEST_CODE);
+            startActivityForResult(i, UPLOAD_IMAGE_REQUEST_CODE);
+
         } catch (android.content.ActivityNotFoundException ex) {
             SnackAlert.error(parentView, "Please install a file manager");
         }
@@ -838,9 +835,9 @@ public class AttendanceFragment extends Fragment implements
                         if (!path.equals("")) {
                             String[] temp = path.split("\\.");
                             if (path.length() > 0) {
-                                if (temp[(temp.length) - 1].equals("gif") || temp[(temp.length) - 1].equals("jpeg") ||
-                                        temp[(temp.length) - 1].equals("jfif") || temp[(temp.length) - 1].equals("png") ||
-                                        temp[(temp.length) - 1].equals("jpg")) {
+                                if (temp[(temp.length) - 1].equalsIgnoreCase("gif") || temp[(temp.length) - 1].equalsIgnoreCase("jpeg") ||
+                                        temp[(temp.length) - 1].equalsIgnoreCase("jfif") || temp[(temp.length) - 1].equalsIgnoreCase("png") ||
+                                        temp[(temp.length) - 1].equalsIgnoreCase("jpg")) {
                                     // /storage/emulated/0/WhatsApp/Media/WhatsApp Images/IMG-20210318-WA0002.jpg
                                     selectedImageString = path;
 
