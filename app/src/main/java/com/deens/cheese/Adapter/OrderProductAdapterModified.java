@@ -54,10 +54,13 @@ public class OrderProductAdapterModified extends RecyclerView.Adapter<OrderProdu
 
         holder.quantityTitle.setText(dataModel.getQuantity() + "x");
 
-        if (dataModel.getQuantity() != 0)
+        if (dataModel.getQuantity() != 0){
+
             holder.totalAmount.setText((dataModel.getQuantity() *
                     (dataModel.getProductSalaPrice().intValue()
                             - dataModel.getOfferAmount())) + " PKR");
+        }else
+            holder.totalAmount.setText("");
 
 
         holder.add.setOnClickListener(new View.OnClickListener() {

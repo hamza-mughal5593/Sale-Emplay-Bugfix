@@ -190,41 +190,7 @@ public class POInvoiceUpdate extends AppCompatActivity {
 
                         productList.setOnItemClickListener((adapterView, view, i, l) -> {
                             if (view.getId() == R.id.add){
-                                hideSoftKeyboard(POInvoiceUpdate.this);
-                                // Create a new Invoice Product List
-                                List<POProductDetailClass> invoiceNewList = selectedOrder.getPOProductDetailClass();
-
-                                if (products.get(i).getQuantity() != 0){
-                                    int id = 1;
-
-                                    if (selectedOrder.getPOProductDetailClass().size() > 0){
-                                        id = selectedOrder.getPOProductDetailClass().get(selectedOrder.getPOProductDetailClass().size() - 1).getID() + 1;
-                                    }
-
-                                    POProductDetailClass productDetail = new POProductDetailClass(id
-                                            , selectedOrder.getPOID()
-                                            , products.get(i).getProductID()
-                                            , products.get(i).getProductName()
-                                            , products.get(i).getQuantity()
-                                            , (int)(products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
-                                            , products.get(i).getProductSalaPrice().intValue());
-                                    invoiceNewList.add(productDetail);
-                                    selectedOrder.setPOProductDetailClass(invoiceNewList);
-                                    invoiceAdapter = new POInvoiceDetailAdapter(selectedOrder.getPOProductDetailClass(),
-                                            POInvoiceUpdate.this);
-                                    invoiceProductsList.setAdapter(invoiceAdapter);
-
-                                    // Reload Total Product ListView
-                                    if (isNetworkAvailable()) {
-                                        GetProducts task = new GetProducts();
-                                        task.execute();
-                                    } else {
-                                        SnackAlert.error(parentView, "Internet not available!");
-                                    }
-
-                                }else {
-                                    SnackAlert.error(parentView, "Enter quantity!");
-                                }
+                                quantityAdditionDialog(i);
                             }
                         });
                     } else {
@@ -233,6 +199,71 @@ public class POInvoiceUpdate extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void quantityAdditionDialog(int i) {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(POInvoiceUpdate.this);
+        LayoutInflater in = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = in.inflate(R.layout.my_dialogue_box, null);
+        EditText quantity = v.findViewById(R.id.quantity);
+        NoboButton add = v.findViewById(R.id.add);
+        NoboButton cancel = v.findViewById(R.id.cancel);
+        builder.setTitle("Enter Quantity");
+        builder.setView(v);
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+
+        cancel.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        add.setOnClickListener(view -> {
+
+
+
+            hideSoftKeyboard(POInvoiceUpdate.this);
+            // Create a new Invoice Product List
+            List<POProductDetailClass> invoiceNewList = selectedOrder.getPOProductDetailClass();
+            if (!quantity.getText().toString().trim().equals("")) {
+                products.get(i).setQuantity(Integer.parseInt(quantity.getText().toString().trim()));
+            }
+            if (products.get(i).getQuantity() != 0){
+
+
+
+
+                int id = 1;
+
+                if (selectedOrder.getPOProductDetailClass().size() > 0){
+                    id = selectedOrder.getPOProductDetailClass().get(selectedOrder.getPOProductDetailClass().size() - 1).getID() + 1;
+                }
+
+                POProductDetailClass productDetail = new POProductDetailClass(id
+                        , selectedOrder.getPOID()
+                        , products.get(i).getProductID()
+                        , products.get(i).getProductName()
+                        , products.get(i).getQuantity()
+                        , (int)(products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
+                        , products.get(i).getProductSalaPrice().intValue());
+                invoiceNewList.add(productDetail);
+                selectedOrder.setPOProductDetailClass(invoiceNewList);
+                invoiceAdapter = new POInvoiceDetailAdapter(selectedOrder.getPOProductDetailClass(),
+                        POInvoiceUpdate.this);
+                invoiceProductsList.setAdapter(invoiceAdapter);
+
+                // Reload Total Product ListView
+                if (isNetworkAvailable()) {
+                    GetProducts task = new GetProducts();
+                    task.execute();
+                } else {
+                    SnackAlert.error(parentView, "Internet not available!");
+                }
+
+            }else {
+                SnackAlert.error(parentView, "Enter quantity!");
+            }
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
     private class UpdateMasterInvoice extends AsyncTask<Void, Void, Void> {

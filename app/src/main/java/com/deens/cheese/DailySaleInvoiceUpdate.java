@@ -22,6 +22,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -122,11 +124,11 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
         }
 
         update.setOnClickListener(view -> {
-            if (selectedOrder.getPOProductDetailClass().size() > 0){
+            if (selectedOrder.getPOProductDetailClass().size() > 0) {
                 if (isNetworkAvailable()) {
-                    if (remarks.getText().toString().equals("")){
+                    if (remarks.getText().toString().equals("")) {
                         SnackAlert.error(parentView, "Please add remarks");
-                    }else {
+                    } else {
                         UpdateMasterInvoice task = new UpdateMasterInvoice();
                         task.execute();
                     }
@@ -175,7 +177,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void a) {
-            if (!isFinishing()){
+            if (!isFinishing()) {
                 loadingView.setVisibility(View.GONE);
                 if (!message.equals("")) {
                     // Show some message from server
@@ -188,42 +190,8 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                         productList.setAdapter(productsAdapter);
 
                         productList.setOnItemClickListener((adapterView, view, i, l) -> {
-                            if (view.getId() == R.id.add){
-                                hideSoftKeyboard(DailySaleInvoiceUpdate.this);
-                                // Create a new Invoice Product List
-                                List<POProductDetailClass> invoiceNewList = selectedOrder.getPOProductDetailClass();
-
-                                if (products.get(i).getQuantity() != 0){
-                                    int id = 1;
-
-                                    if (selectedOrder.getPOProductDetailClass().size() > 0){
-                                        id = selectedOrder.getPOProductDetailClass().get(selectedOrder.getPOProductDetailClass().size() - 1).getID() + 1;
-                                    }
-
-                                    POProductDetailClass productDetail = new POProductDetailClass(id
-                                            , selectedOrder.getPOID()
-                                            , products.get(i).getProductID()
-                                            , products.get(i).getProductName()
-                                            , products.get(i).getQuantity()
-                                            , (int)(products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
-                                            , products.get(i).getProductSalaPrice().intValue());
-                                    invoiceNewList.add(productDetail);
-                                    selectedOrder.setPOProductDetailClass(invoiceNewList);
-                                    invoiceAdapter = new POInvoiceDetailAdapter(selectedOrder.getPOProductDetailClass(),
-                                            DailySaleInvoiceUpdate.this);
-                                    invoiceProductsList.setAdapter(invoiceAdapter);
-
-                                    // Reload Total Product ListView
-                                    if (isNetworkAvailable()) {
-                                        GetProducts task = new GetProducts();
-                                        task.execute();
-                                    } else {
-                                        SnackAlert.error(parentView, "Internet not available!");
-                                    }
-
-                                }else {
-                                    SnackAlert.error(parentView, "Enter quantity!");
-                                }
+                            if (view.getId() == R.id.add) {
+                                quantityAdditionDialog(i);
                             }
                         });
                     } else {
@@ -233,6 +201,73 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
             }
         }
     }
+
+
+    public void quantityAdditionDialog(int i) {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(DailySaleInvoiceUpdate.this);
+        LayoutInflater in = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = in.inflate(R.layout.my_dialogue_box, null);
+        EditText quantity = v.findViewById(R.id.quantity);
+        NoboButton add = v.findViewById(R.id.add);
+        NoboButton cancel = v.findViewById(R.id.cancel);
+        builder.setTitle("Enter Quantity");
+        builder.setView(v);
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+
+        cancel.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        add.setOnClickListener(view -> {
+
+
+
+            hideSoftKeyboard(DailySaleInvoiceUpdate.this);
+            // Create a new Invoice Product List
+            List<POProductDetailClass> invoiceNewList = selectedOrder.getPOProductDetailClass();
+            if (!quantity.getText().toString().trim().equals("")) {
+                products.get(i).setQuantity(Integer.parseInt(quantity.getText().toString().trim()));
+            }
+            if (products.get(i).getQuantity() != 0) {
+
+
+
+                int id = 1;
+
+                if (selectedOrder.getPOProductDetailClass().size() > 0) {
+                    id = selectedOrder.getPOProductDetailClass().get(selectedOrder.getPOProductDetailClass().size() - 1).getID() + 1;
+                }
+
+                POProductDetailClass productDetail = new POProductDetailClass(id
+                        , selectedOrder.getPOID()
+                        , products.get(i).getProductID()
+                        , products.get(i).getProductName()
+                        , products.get(i).getQuantity()
+                        , (int) (products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
+                        , products.get(i).getProductSalaPrice().intValue());
+                invoiceNewList.add(productDetail);
+                selectedOrder.setPOProductDetailClass(invoiceNewList);
+                invoiceAdapter = new POInvoiceDetailAdapter(selectedOrder.getPOProductDetailClass(),
+                        DailySaleInvoiceUpdate.this);
+                invoiceProductsList.setAdapter(invoiceAdapter);
+
+                // Reload Total Product ListView
+                if (isNetworkAvailable()) {
+                    GetProducts task = new GetProducts();
+                    task.execute();
+                } else {
+                    SnackAlert.error(parentView, "Internet not available!");
+                }
+
+            } else {
+                SnackAlert.error(parentView, "Enter quantity!");
+            }
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
 
     private class UpdateMasterInvoice extends AsyncTask<Void, Void, Void> {
 
@@ -254,10 +289,10 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                 RequestBody body = RequestBody.create(mediaType, "");
 
                 Request request = new Request.Builder()
-                        .url(URL + methodName + "POID="+ selectedOrder.getPOID()
-                                +"&PODate="+ URLEncoder.encode(selectedOrder.getPODate())
-                                +"&CustomerID=" + selectedOrder.getCusCustomerID()
-                                +"&Remarks="+ URLEncoder.encode(remarks.getText().toString().trim(), "UTF-8"))
+                        .url(URL + methodName + "POID=" + selectedOrder.getPOID()
+                                + "&PODate=" + URLEncoder.encode(selectedOrder.getPODate())
+                                + "&CustomerID=" + selectedOrder.getCusCustomerID()
+                                + "&Remarks=" + URLEncoder.encode(remarks.getText().toString().trim(), "UTF-8"))
                         .method("POST", body)
                         .addHeader(KEY_NAME, API_KEY)
                         .build();
@@ -277,11 +312,11 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void a) {
-            if (!isFinishing()){
+            if (!isFinishing()) {
                 loadingView.setVisibility(View.GONE);
                 if (!message.equals("")) {
                     // Show some message from server
-                    if (messageDetail.contains("Update")){
+                    if (messageDetail.contains("Update")) {
                         // Step 2. Call in loop invoice detail delete method
                         if (isNetworkAvailable()) {
                             DeleteInvoiceDetail task = new DeleteInvoiceDetail();
@@ -289,7 +324,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                         } else {
                             SnackAlert.error(parentView, "Internet not available!");
                         }
-                    }else {
+                    } else {
                         showDialog(message, messageDetail, "OK", "", R.drawable.ic_tick, R.drawable.ic_cancel, false);
                     }
                 }
@@ -317,7 +352,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                 RequestBody body = RequestBody.create(mediaType, "");
 
                 Request request = new Request.Builder()
-                        .url(URL + methodName + "POID="+ selectedOrder.getPOID())
+                        .url(URL + methodName + "POID=" + selectedOrder.getPOID())
                         .method("POST", body)
                         .addHeader(KEY_NAME, API_KEY)
                         .build();
@@ -337,11 +372,11 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void a) {
-            if (!isFinishing()){
+            if (!isFinishing()) {
                 loadingView.setVisibility(View.GONE);
                 if (!message.equals("")) {
                     // Show some message from server
-                    if (messageDetail.contains("Deleted")){
+                    if (messageDetail.contains("Deleted")) {
                         // Step 3. Call in loop invoice detail save method
                         if (isNetworkAvailable()) {
                             SubmitDetailInvoice task = new SubmitDetailInvoice();
@@ -349,7 +384,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                         } else {
                             SnackAlert.error(parentView, "Internet not available!");
                         }
-                    }else {
+                    } else {
                         showDialog(message, messageDetail, "OK", "", R.drawable.ic_tick, R.drawable.ic_cancel, false);
                     }
                 }
@@ -367,7 +402,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
             messageDetail = "";
             loadingView.setVisibility(View.VISIBLE);
 
-            if (detailMethodCount == selectedOrder.getPOProductDetailClass().size() - 1){
+            if (detailMethodCount == selectedOrder.getPOProductDetailClass().size() - 1) {
                 isLastEntry = true;
             }
         }
@@ -407,17 +442,17 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void a) {
-            if (!isFinishing()){
+            if (!isFinishing()) {
                 loadingView.setVisibility(View.GONE);
-                if (!message.contains("")){
+                if (!message.contains("")) {
                     showDialog("Deen's Cheese", "Some error occurred! Please try later!", "OK", "", R.drawable.ic_tick,
                             R.drawable.ic_cancel, false);
-                }else {
+                } else {
                     detailMethodCount++;
 
-                    if (detailMethodCount < selectedOrder.getPOProductDetailClass().size()){
+                    if (detailMethodCount < selectedOrder.getPOProductDetailClass().size()) {
 
-                        if (detailMethodCount == selectedOrder.getPOProductDetailClass().size()){
+                        if (detailMethodCount == selectedOrder.getPOProductDetailClass().size()) {
                             isLastEntry = true;
                         }
 
@@ -428,7 +463,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                             SnackAlert.error(parentView, "Internet not available!");
                         }
 
-                    }else {
+                    } else {
                         showDialog("Deen's Cheese", "Daily Sale updated successfully!", "OK", "", R.drawable.ic_tick,
                                 R.drawable.ic_cancel, false);
                     }
@@ -442,13 +477,13 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
         if (methodName.equals("Product")) {
             try {
                 JSONArray jsonArray = new JSONArray(networkResp);
-                if (jsonArray.length() > 0){
-                    if (!jsonArray.getJSONObject(0).getString("ProductID").equals("0")){
+                if (jsonArray.length() > 0) {
+                    if (!jsonArray.getJSONObject(0).getString("ProductID").equals("0")) {
                         ArrayList<Integer> productIds = new ArrayList<Integer>();
 
                         // Get all product ids which are added into invoice list already
                         // we will hide them in total product list
-                        for (int i = 0 ; i < selectedOrder.getPOProductDetailClass().size(); i++){
+                        for (int i = 0; i < selectedOrder.getPOProductDetailClass().size(); i++) {
                             productIds.add(selectedOrder.getPOProductDetailClass().get(i).getProductID());
                         }
 
@@ -456,7 +491,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            if (!productIds.contains(jsonObject.getInt("ProductID"))){
+                            if (!productIds.contains(jsonObject.getInt("ProductID"))) {
                                 products.add(new SOProductClass(jsonObject.getInt("ProductID"),
                                         jsonObject.getString("CompanyName"),
                                         jsonObject.getString("ProductCode"),
@@ -468,11 +503,11 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                                         jsonObject.getDouble("Discount")));
                             }
                         }
-                    }else {
+                    } else {
                         message = "Deen's Cheese";
                         messageDetail = "No product found!";
                     }
-                }else {
+                } else {
                     message = "Deen's Cheese";
                     messageDetail = "No product found!";
                 }
@@ -482,26 +517,26 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
             }
         }
 
-        if (methodName.equals("Update")){
+        if (methodName.equals("Update")) {
             message = "Deen's Cheese";
             messageDetail = networkResp;
         }
 
-        if (methodName.equals("Delete")){
+        if (methodName.equals("Delete")) {
             message = "Deen's Cheese";
             messageDetail = networkResp;
         }
     }
 
     private void loadDetailListView() {
-        if (selectedOrder.getPOProductDetailClass().size() > 0){
+        if (selectedOrder.getPOProductDetailClass().size() > 0) {
             invoiceAdapter = new POInvoiceDetailAdapter(selectedOrder.getPOProductDetailClass(),
                     DailySaleInvoiceUpdate.this);
             invoiceProductsList.setAdapter(invoiceAdapter);
 
             // selectedOrder.getProductDetails()  == Our Added Product List in Invoice
             invoiceProductsList.setOnItemClickListener((adapterView, view, i, l) -> {
-                if (view.getId() == R.id.add){
+                if (view.getId() == R.id.add) {
                     // Change ProductDetail Object values ==> Quantity, Offer Amount, Total Amount
 
                     // Update Quantity
@@ -511,10 +546,10 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                     updateTotalAmount(i);
                     invoiceAdapter.notifyDataSetChanged();
                 }
-                if (view.getId() == R.id.less){
+                if (view.getId() == R.id.less) {
                     // Change ProductDetail Object values ==> Quantity, Offer Amount, Total Amount
 
-                    if (selectedOrder.getPOProductDetailClass().get(i).getQuantity() > 1){
+                    if (selectedOrder.getPOProductDetailClass().get(i).getQuantity() > 1) {
                         // Update Quantity
                         selectedOrder.getPOProductDetailClass().get(i).
                                 setQuantity(selectedOrder.getPOProductDetailClass().get(i).getQuantity() - 1);
@@ -523,7 +558,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                         invoiceAdapter.notifyDataSetChanged();
                     }
                 }
-                if (view.getId() == R.id.remove){
+                if (view.getId() == R.id.remove) {
                     // Remove from ArrayList<ProductDetailClass>
                     selectedOrder.getPOProductDetailClass().remove(i);
                     invoiceAdapter.notifyDataSetChanged();
@@ -536,7 +571,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
                         SnackAlert.error(parentView, "Internet not available!");
                     }
                 }
-                if (view.getId() == R.id.offer){
+                if (view.getId() == R.id.offer) {
                     // Change ProductDetail Object values ==> Trade Offer, Offer Amount, Total Amount
 
                     // Take Trade Offer input from SO
@@ -640,7 +675,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
         }
     }
 
-    private void showInputDialog(int i){
+    private void showInputDialog(int i) {
         LayoutInflater factory = LayoutInflater.from(DailySaleInvoiceUpdate.this);
         final View view = factory.inflate(R.layout.input_dialog, null);
         final AlertDialog alert = new AlertDialog.Builder(this).create();
@@ -664,7 +699,7 @@ public class DailySaleInvoiceUpdate extends AppCompatActivity {
 
                 hideSoftKeyboard(DailySaleInvoiceUpdate.this);
                 alert.dismiss();
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 Log.w("Number Exception: ", ex.toString());
             }
         });

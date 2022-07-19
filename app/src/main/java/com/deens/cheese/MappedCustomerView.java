@@ -5,6 +5,8 @@ import static com.deens.cheese.GlobalVariable.KEY_NAME;
 import static com.deens.cheese.GlobalVariable.URL;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,6 +17,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +27,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deens.cheese.Adapter.CourseAdapter;
 import com.deens.cheese.databinding.FragmentPreinvoiceBinding;
 import com.deens.cheese.ui.preinvoice.PreInvoiceFragment;
 import com.google.gson.Gson;
@@ -63,10 +70,12 @@ public class MappedCustomerView extends AppCompatActivity {
     String messageDetail = "";
     ArrayList<CustomerClass> customers = new ArrayList<>();
     String selectedCustomerID = "";
-    Spinner customerSpinner;
+    TextView customerSpinner;
     NoboButton preInvoice;
     ImageView back;
     String whatToGenerate = "";
+    RelativeLayout listmain;
+    LinearLayout customerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +87,8 @@ public class MappedCustomerView extends AppCompatActivity {
         customerSpinner = findViewById(R.id.customerSpinner);
         preInvoice = findViewById(R.id.preInvoice);
         back = findViewById(R.id.back);
+        listmain = findViewById(R.id.listmain);
+        customerView = findViewById(R.id.customerView);
 
         whatToGenerate = getIntent().getExtras().getString("From", whatToGenerate);
         preferences = getSharedPreferences(GlobalVariable.PREF_NAME, MODE_PRIVATE);
@@ -108,12 +119,27 @@ public class MappedCustomerView extends AppCompatActivity {
             }else {
                 startActivity(new Intent(MappedCustomerView.this, ProductListDailySale.class)
                         .putExtra("CID", selectedCustomerID));
+                finish();
             }
         });
 
         preInvoice.setText(whatToGenerate);
 
-        back.setOnClickListener(view -> MappedCustomerView.super.onBackPressed());
+        back.setOnClickListener(view -> onBackPressed());
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (listmain.getVisibility() == View.VISIBLE) {
+            customerView.setVisibility(View.VISIBLE);
+            listmain.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
+
+
     }
 
     private void loadPreferences() {
@@ -171,23 +197,149 @@ public class MappedCustomerView extends AppCompatActivity {
                         for (int i = 0; i < customers.size(); i++) {
                             names.add(customers.get(i).getCustomerName());
                         }
-                        ArrayAdapter adapter = new ArrayAdapter(MappedCustomerView.this, R.layout.spinner_item, names.toArray());
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        customerSpinner.setAdapter(adapter);
-                        customerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                                selectedCustomerID = String.valueOf(customers.get(i).getCustomerID());
-                            }
 
-                            @Override
-                            public void onNothingSelected(AdapterView<?> adapterView) {}
-                        });
+                        if (names.size()>0){
+                            customerSpinner.setText(names.get(0));
+                            customerSpinner.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    customerView.setVisibility(View.GONE);
+                                    listmain.setVisibility(View.VISIBLE);
+                                    setlist(names);
+                                }
+                            });
+                        }
+
+
+
+
+//                        ArrayAdapter adapter = new ArrayAdapter(MappedCustomerView.this, R.layout.spinner_item, names.toArray());
+//                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                        customerSpinner.setAdapter(adapter);
+//                        customerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                            @Override
+//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                                selectedCustomerID = String.valueOf(customers.get(i).getCustomerID());
+//                            }
+//
+//                            @Override
+//                            public void onNothingSelected(AdapterView<?> adapterView) {}
+//                        });
                     }
                 }
             }
         }
     }
+
+
+
+RecyclerView listrecycler;
+    CourseAdapter adapter;
+    private void setlist(ArrayList<String> names){
+
+
+
+        // initializing our variables.
+        listrecycler = findViewById(R.id.listrecycler);
+
+        // calling method to
+        // build recycler view.
+        buildRecyclerView(names);
+
+
+
+        EditText searchView = findViewById(R.id.searchField);
+
+        // below line is to call set on query text listener method.
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s,names);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                // inside on query text change method we are
+//                // calling a method to filter our recycler view.
+//
+//                return false;
+//            }
+//        });
+    }
+
+    private void filter(CharSequence text,ArrayList<String> data) {
+        // creating a new array list to filter our data.
+        ArrayList<String> filteredlist = new ArrayList<>();
+
+        // running a for loop to compare elements.
+        for (String item : data) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.toLowerCase().contains(text)) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredlist.add(item);
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            adapter.filterList(filteredlist);
+        }
+    }
+    private void buildRecyclerView(ArrayList<String> names) {
+
+        // below line we are creating a new array list
+
+
+        // initializing our adapter class.
+        adapter = new CourseAdapter(names, MappedCustomerView.this, new CourseAdapter.AdapterCallback() {
+            @Override
+            public void add_data(int pos, String holder) {
+                selectedCustomerID = String.valueOf(customers.get(pos).getCustomerID());
+                customerView.setVisibility(View.VISIBLE);
+                listmain.setVisibility(View.GONE);
+
+                if (names.size()>0){
+                    customerSpinner.setText(holder);
+                }
+
+            }
+        });
+
+        // adding layout manager to our recycler view.
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        listrecycler.setHasFixedSize(true);
+
+        // setting layout manager
+        // to our recycler view.
+        listrecycler.setLayoutManager(manager);
+
+        // setting adapter to
+        // our recycler view.
+        listrecycler.setAdapter(adapter);
+    }
+
+
 
     private void parseJSONStringToJSONObject(String networkResp, String methodName) {
         if (methodName.equals("Customer")) {

@@ -43,6 +43,7 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
@@ -190,44 +191,7 @@ public class SOInvoiceUpdate extends AppCompatActivity {
 
                         productList.setOnItemClickListener((adapterView, view, i, l) -> {
                             if (view.getId() == R.id.add){
-                                hideSoftKeyboard(SOInvoiceUpdate.this);
-                                // Create a new Invoice Product List
-                                ArrayList<ProductDetailClass> invoiceNewList = selectedOrder.getProductsDetails();
-
-                                if (products.get(i).getQuantity() != 0){
-                                    int id = 1;
-
-                                    if (selectedOrder.getProductsDetails().size() > 0){
-                                        id = selectedOrder.getProductsDetails().get(selectedOrder.getProductsDetails().size() - 1).getId() + 1;
-                                    }
-
-                                    ProductDetailClass productDetail = new ProductDetailClass(id
-                                            , products.get(i).getProductID()
-                                            , products.get(i).getProductName()
-                                            , products.get(i).getProductSalaPrice().intValue()
-                                            , products.get(i).getQuantity()
-                                            , 0, 0
-                                            , (int)(products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
-                                            , products.get(i).getDiscount().intValue(),0);
-                                    invoiceNewList.add(productDetail);
-                                    selectedOrder.setProductsDetails(invoiceNewList);
-                                    invoiceAdapter = new SOInvoiceDetailAdapter(selectedOrder.getProductsDetails(),
-                                            SOInvoiceUpdate.this);
-                                    invoiceProductsList.setAdapter(invoiceAdapter);
-
-                                    calculateAmounts();
-
-                                    // Reload Total Product ListView
-                                    if (isNetworkAvailable()) {
-                                        GetProducts task = new GetProducts();
-                                        task.execute();
-                                    } else {
-                                        SnackAlert.error(parentView, "Internet not available!");
-                                    }
-
-                                }else {
-                                    SnackAlert.error(parentView, "Enter quantity!");
-                                }
+                                quantityAdditionDialog(i);
                             }
                         });
                     } else {
@@ -236,6 +200,73 @@ public class SOInvoiceUpdate extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void quantityAdditionDialog(int i) {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(SOInvoiceUpdate.this);
+        LayoutInflater in = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = in.inflate(R.layout.my_dialogue_box, null);
+        EditText quantity = v.findViewById(R.id.quantity);
+        NoboButton add = v.findViewById(R.id.add);
+        NoboButton cancel = v.findViewById(R.id.cancel);
+        builder.setTitle("Enter Quantity");
+        builder.setView(v);
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+
+        cancel.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        add.setOnClickListener(view -> {
+
+
+
+            hideSoftKeyboard(SOInvoiceUpdate.this);
+            // Create a new Invoice Product List
+            ArrayList<ProductDetailClass> invoiceNewList = selectedOrder.getProductsDetails();
+            if (!quantity.getText().toString().trim().equals("")) {
+                products.get(i).setQuantity(Integer.parseInt(quantity.getText().toString().trim()));
+            }
+            if (products.get(i).getQuantity() != 0){
+
+
+
+                int id = 1;
+
+                if (selectedOrder.getProductsDetails().size() > 0){
+                    id = selectedOrder.getProductsDetails().get(selectedOrder.getProductsDetails().size() - 1).getId() + 1;
+                }
+
+                ProductDetailClass productDetail = new ProductDetailClass(id
+                        , products.get(i).getProductID()
+                        , products.get(i).getProductName()
+                        , products.get(i).getProductSalaPrice().intValue()
+                        , products.get(i).getQuantity()
+                        , 0, 0
+                        , (int)(products.get(i).getQuantity() * products.get(i).getProductSalaPrice())
+                        , products.get(i).getDiscount().intValue(),0);
+                invoiceNewList.add(productDetail);
+                selectedOrder.setProductsDetails(invoiceNewList);
+                invoiceAdapter = new SOInvoiceDetailAdapter(selectedOrder.getProductsDetails(),
+                        SOInvoiceUpdate.this);
+                invoiceProductsList.setAdapter(invoiceAdapter);
+
+                calculateAmounts();
+
+                // Reload Total Product ListView
+                if (isNetworkAvailable()) {
+                    GetProducts task = new GetProducts();
+                    task.execute();
+                } else {
+                    SnackAlert.error(parentView, "Internet not available!");
+                }
+
+            }else {
+                SnackAlert.error(parentView, "Enter quantity!");
+            }
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
     private class UpdateMasterInvoice extends AsyncTask<Void, Void, Void> {

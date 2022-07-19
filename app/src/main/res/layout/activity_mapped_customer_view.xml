@@ -64,12 +64,27 @@
                 android:paddingTop="4dp"
                 android:text="Customers"
                 android:textColor="@color/black" />
+<RelativeLayout
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-            <Spinner
-                android:id="@+id/customerSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="2dp" />
+    <TextView
+        android:id="@+id/customerSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo_regular"
+        android:paddingStart="4dp"
+        android:paddingTop="4dp"
+        android:text=""
+        android:textColor="@color/black" />
+    <ImageView
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+</RelativeLayout>
+
 
         </LinearLayout>
 
@@ -108,6 +123,81 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             app:SpinKit_Color="@color/color_secondry" />
+
+    </RelativeLayout>
+
+    <!-- Loading View -->
+    <RelativeLayout
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/headerView"
+        android:id="@+id/listmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <RelativeLayout
+android:id="@+id/search_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/all_corner_grey"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/searchField"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/cancel"
+                android:background="@color/transparent"
+                android:fontFamily="@font/baloo_regular"
+                android:hint="Search a Product"
+                android:maxLines="1"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/line"
+                android:src="@drawable/ic_round_circle"
+                android:visibility="gone"
+                app:tint="@color/color_secondry" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/search"
+                android:background="@color/black" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_search" />
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listrecycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_below="@+id/search_main"
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 

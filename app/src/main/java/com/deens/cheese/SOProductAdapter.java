@@ -80,26 +80,26 @@ public class SOProductAdapter extends ArrayAdapter<SOProductClass> {
         viewHolder.companyName.setText(dataModel.getCompanyName());
         viewHolder.discount.setText("(Discount: "+ dataModel.getDiscount().intValue() + ")");
         viewHolder.unit.setText("(Unit: "+ dataModel.getProductUnit() + ")");
-        viewHolder.quantity.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                try {
-                    if (!viewHolder.quantity.getText().toString().trim().equals("")){
-                        dataModel.setQuantity(Integer.parseInt(viewHolder.quantity.getText().toString().trim()));
-                    }
-                } catch (NumberFormatException ex){
-                    Log.w("Number Exception: " , ex.toString());
-                }
-            }
-        });
+//        viewHolder.quantity.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                try {
+//                    if (!viewHolder.quantity.getText().toString().trim().equals("")){
+//                        dataModel.setQuantity(Integer.parseInt(viewHolder.quantity.getText().toString().trim()));
+//                    }
+//                } catch (NumberFormatException ex){
+//                    Log.w("Number Exception: " , ex.toString());
+//                }
+//            }
+//        });
 
         return convertView;
     }
