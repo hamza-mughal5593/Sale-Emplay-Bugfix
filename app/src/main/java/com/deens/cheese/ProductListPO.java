@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -47,6 +49,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deens.cheese.Adapter.OrderProductAdapterModified;
 import com.github.javiersantos.bottomdialogs.BottomDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -98,7 +101,7 @@ public class ProductListPO extends AppCompatActivity {
     String loggedInUserId = "0";
     UserClass userClass;
     String selectedCustomerID = "";
-    ListView listView;
+    RecyclerView listView;
 
     NoboButton place;
 
@@ -207,7 +210,7 @@ public class ProductListPO extends AppCompatActivity {
         String json = preferences.getString("User", "");
         userClass = gson.fromJson(json, UserClass.class);
     }
-
+    OrderProductAdapterModified adapter;
     private class GetProducts extends AsyncTask<Void, Void, Void> {
 
         String methodName = "Invoice/GetProductListByCustomer?";
@@ -253,16 +256,20 @@ public class ProductListPO extends AppCompatActivity {
                     showDialog(message, messageDetail, "OK", "", R.drawable.ic_tick, R.drawable.ic_cancel, false);
                 } else {
                     if (products.size() > 0) {
-                        OrderProductAdapter adapter = new OrderProductAdapter(products, ProductListPO.this);
-                        listView.setAdapter(adapter);
 
-                        listView.setOnItemClickListener((adapterView, view, i, l) -> {
-                            if (view.getId() == R.id.add) {
-                                quantityAdditionDialog(i);
+
+                        LinearLayoutManager LayoutManager = new LinearLayoutManager(ProductListPO.this);
+                        listView.setLayoutManager(LayoutManager);
+                        adapter = new OrderProductAdapterModified(products, ProductListPO.this, new OrderProductAdapterModified.AdapterCallback() {
+                            @Override
+                            public void add_data(int pos, View holder) {
+                                quantityAdditionDialog(pos);
                             }
-                            if (view.getId() == R.id.minus) {
-                                if (products.get(i).getQuantity() > 0){
-                                    quantityMinusDialog(i);
+
+                            @Override
+                            public void minus_data(int pos, View holder) {
+                                if (products.get(pos).getQuantity() > 0){
+                                    quantityMinusDialog(pos);
                                 }else {
                                     Toast.makeText(ProductListPO.this,
                                             "Quantity is zero",
@@ -270,6 +277,33 @@ public class ProductListPO extends AppCompatActivity {
                                 }
                             }
                         });
+                        listView.setAdapter(adapter);
+
+
+
+
+
+
+
+
+
+//                        OrderProductAdapterModified adapter = new OrderProductAdapterModified(products, ProductListPO.this);
+//                        listView.setAdapter(adapter);
+//
+//                        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+//                            if (view.getId() == R.id.add) {
+//                                quantityAdditionDialog(i);
+//                            }
+//                            if (view.getId() == R.id.minus) {
+//                                if (products.get(i).getQuantity() > 0){
+//                                    quantityMinusDialog(i);
+//                                }else {
+//                                    Toast.makeText(ProductListPO.this,
+//                                            "Quantity is zero",
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
                     } else {
                         showDialog("Deen's Cheese", "No product found", "OK", "",
                                 R.drawable.ic_tick, R.drawable.ic_cancel, false);
@@ -593,9 +627,9 @@ public class ProductListPO extends AppCompatActivity {
         });
 
         add.setOnClickListener(view -> {
-            View listItem = getViewByPosition(index, listView);
-            TextView quantityLabel = listItem.findViewById(R.id.quantityTitle);
-            TextView totalAmount = listItem.findViewById(R.id.totalAmount);
+//            View listItem = getViewByPosition(index, listView);
+//            TextView quantityLabel = listItem.findViewById(R.id.quantityTitle);
+//            TextView totalAmount = listItem.findViewById(R.id.totalAmount);
             if (!quantity.getText().toString().trim().equals("")) {
                 try {
                     int previousQuantity = products.get(index).getQuantity();
@@ -603,11 +637,12 @@ public class ProductListPO extends AppCompatActivity {
                     if ((previousQuantity + Integer.parseInt(quantity.getText().toString().trim())) > -1) {
                         products.get(index).setQuantity(previousQuantity +
                                 Integer.parseInt(quantity.getText().toString().trim()));
-                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
+//                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
                         quantity.setText("");
-                        totalAmount.setText((products.get(index).getQuantity() *
-                                (products.get(index).getProductSalaPrice().intValue()
-                                        - products.get(index).getOfferAmount())) + " PKR");
+//                        totalAmount.setText((products.get(index).getQuantity() *
+//                                (products.get(index).getProductSalaPrice().intValue()
+//                                        - products.get(index).getOfferAmount())) + " PKR");
+                        adapter.notifyItemChanged(index);
                     }
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
@@ -636,9 +671,9 @@ public class ProductListPO extends AppCompatActivity {
         });
 
         minus.setOnClickListener(view -> {
-            View listItem = getViewByPosition(index, listView);
-            TextView quantityLabel = listItem.findViewById(R.id.quantityTitle);
-            TextView totalAmount = listItem.findViewById(R.id.totalAmount);
+//            View listItem = getViewByPosition(index, listView);
+//            TextView quantityLabel = listItem.findViewById(R.id.quantityTitle);
+//            TextView totalAmount = listItem.findViewById(R.id.totalAmount);
             if (!quantity.getText().toString().trim().equals("")) {
                 try {
                     int previousQuantity = products.get(index).getQuantity();
@@ -646,11 +681,13 @@ public class ProductListPO extends AppCompatActivity {
                     if ((previousQuantity - Integer.parseInt(quantity.getText().toString().trim())) > -1) {
                         products.get(index).setQuantity(previousQuantity -
                                 Integer.parseInt(quantity.getText().toString().trim()));
-                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
+//                        quantityLabel.setText((products.get(index).getQuantity()) + "x");
                         quantity.setText("");
-                        totalAmount.setText((products.get(index).getQuantity() *
-                                (products.get(index).getProductSalaPrice().intValue()
-                                        - products.get(index).getOfferAmount())) + " PKR");
+//                        totalAmount.setText((products.get(index).getQuantity() *
+//                                (products.get(index).getProductSalaPrice().intValue()
+//                                        - products.get(index).getOfferAmount())) + " PKR");
+
+                        adapter.notifyItemChanged(index);
                     }else {
                         Toast.makeText(ProductListPO.this,
                                 "You cannot minus more than added",

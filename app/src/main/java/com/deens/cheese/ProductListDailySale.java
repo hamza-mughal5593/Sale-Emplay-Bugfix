@@ -670,6 +670,8 @@ public class ProductListDailySale extends AppCompatActivity {
                         totalAmount.setText((products.get(index).getQuantity() *
                                 (products.get(index).getProductSalaPrice().intValue()
                                         - products.get(index).getOfferAmount())) + " PKR");
+
+                        adapter.notifyItemChanged(index);
                     }else {
                         Toast.makeText(ProductListDailySale.this,
                                 "You cannot minus more than added",

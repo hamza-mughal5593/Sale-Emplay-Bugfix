@@ -50,22 +50,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Total ProductS"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
 
-            <com.deens.cheese.NonScrollListView
-                android:id="@+id/productList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:divider="@color/transparent"
-                android:dividerHeight="7dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,7 +68,22 @@
                 android:layout_marginTop="10dip"
                 android:divider="@color/transparent"
                 android:dividerHeight="7dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Total ProductS"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
+            <com.deens.cheese.NonScrollListView
+                android:id="@+id/productList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:divider="@color/transparent"
+                android:dividerHeight="7dp" />
         </LinearLayout>
 
     </ScrollView>

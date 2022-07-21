@@ -116,6 +116,7 @@ public class MappedCustomerView extends AppCompatActivity {
             if (whatToGenerate.contains("Purchase Order")){
                 startActivity(new Intent(MappedCustomerView.this, ProductListPO.class)
                         .putExtra("CID", selectedCustomerID));
+                finish();
             }else {
                 startActivity(new Intent(MappedCustomerView.this, ProductListDailySale.class)
                         .putExtra("CID", selectedCustomerID));

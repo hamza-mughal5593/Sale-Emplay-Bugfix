@@ -15,480 +15,604 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_fingerprint" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/icon"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/baloo_regular"
-                android:text="Please mark your attendance here"
-                android:textAlignment="center"
-                android:textColor="@color/color_secondry"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/title"
-                android:layout_marginTop="10dp"
-                android:id="@+id/buttonsView"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <com.ornach.nobobutton.NoboButton
-                    android:id="@+id/markAttendance"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="5dp"
-                    android:padding="0dp"
-                    app:nb_backgroundColor="@color/color_secondry"
-                    app:nb_focusColor="@color/colorPrimary"
-                    app:nb_radius="25dp"
-                    app:nb_text="Mark Attendance"
-                    app:nb_textAllCaps="true"
-                    android:layout_weight="1"
-                    app:nb_textColor="#FFFFFF"
-                    app:nb_textSize="12sp" />
-
-                <com.ornach.nobobutton.NoboButton
-                    android:id="@+id/bottomButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="5dp"
-                    android:padding="0dp"
-                    app:nb_backgroundColor="@color/quantum_googred"
-                    app:nb_focusColor="@color/error_background"
-                    app:nb_radius="25dp"
-                    app:nb_text="Mark Leave"
-                    app:nb_textAllCaps="true"
-                    app:nb_textColor="#FFFFFF"
-                    app:nb_textSize="12sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/imageTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/buttonsView"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/baloo_regular"
-                android:text="Send &amp; View attendance Images"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/imageUploadView"
-                android:layout_below="@+id/imageTitle"
+                android:id="@+id/customerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ic_fingerprint" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/baloo_regular"
+                    android:text="Please mark your attendance here"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_secondry"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/buttonsView"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.ornach.nobobutton.NoboButton
+                        android:id="@+id/markAttendance"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="5dp"
+                        android:padding="0dp"
+                        app:nb_backgroundColor="@color/color_secondry"
+                        app:nb_focusColor="@color/colorPrimary"
+                        app:nb_radius="25dp"
+                        app:nb_text="Mark Attendance"
+                        app:nb_textAllCaps="true"
+                        android:layout_weight="1"
+                        app:nb_textColor="#FFFFFF"
+                        app:nb_textSize="12sp" />
+
+                    <com.ornach.nobobutton.NoboButton
+                        android:id="@+id/bottomButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="5dp"
+                        android:padding="0dp"
+                        app:nb_backgroundColor="@color/quantum_googred"
+                        app:nb_focusColor="@color/error_background"
+                        app:nb_radius="25dp"
+                        app:nb_text="Mark Leave"
+                        app:nb_textAllCaps="true"
+                        app:nb_textColor="#FFFFFF"
+                        app:nb_textSize="12sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/buttonsView"
+                    android:id="@+id/select_cust_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/corner_bg"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_regular"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:text="Customers"
+                        android:textColor="@color/black" />
+                    <RelativeLayout
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/customerSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_regular"
+                            android:paddingStart="4dp"
+                            android:paddingTop="4dp"
+                            android:text=""
+                            android:textColor="@color/black" />
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/imageTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/select_cust_main"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/baloo_regular"
+                    android:text="Send &amp; View attendance Images"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <RelativeLayout
-                    android:layout_width="170dp"
-                    android:visibility="gone"
-                    android:id="@+id/placeHolderView"
+                    android:layout_width="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:id="@+id/imageUploadView"
+                    android:layout_below="@+id/imageTitle"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:layout_width="170dp"
-                        android:id="@+id/view"
-                        android:layout_height="170dp">
+                        android:visibility="gone"
+                        android:id="@+id/placeHolderView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:textAlignment="center"
-                            android:layout_centerHorizontal="true"
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="@font/baloo_regular"
-                            android:layout_marginBottom="3dp"
-                            android:textColor="@color/color_secondry"
-                            android:layout_height="wrap_content"/>
-
-                        <ImageView
-                            android:id="@+id/placeHolder"
+                        <RelativeLayout
                             android:layout_width="170dp"
-                            android:src="@drawable/ic_placeholder"
-                            android:layout_height="170dp"
-                            android:background="@drawable/rectangle_dashed"
-                            android:padding="5dp"
-                            android:visibility="visible" />
+                            android:id="@+id/view"
+                            android:layout_height="170dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentBottom="true"
+                                android:fontFamily="@font/baloo_regular"
+                                android:layout_marginBottom="3dp"
+                                android:textColor="@color/color_secondry"
+                                android:layout_height="wrap_content"/>
+
+                            <ImageView
+                                android:id="@+id/placeHolder"
+                                android:layout_width="170dp"
+                                android:src="@drawable/ic_placeholder"
+                                android:layout_height="170dp"
+                                android:background="@drawable/rectangle_dashed"
+                                android:padding="5dp"
+                                android:visibility="visible" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/view"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <com.ornach.nobobutton.NoboButton
+                                android:id="@+id/cancelPicture"
+                                android:layout_width="110dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginEnd="5dp"
+                                android:padding="0dp"
+                                app:nb_backgroundColor="@color/quantum_googred"
+                                app:nb_focusColor="@color/error_background"
+                                app:nb_radius="25dp"
+                                app:nb_text="Cancel"
+                                app:nb_textAllCaps="true"
+                                app:nb_textColor="#FFFFFF"
+                                app:nb_textSize="12sp" />
+
+                            <com.ornach.nobobutton.NoboButton
+                                android:id="@+id/uploadPicture"
+                                android:layout_width="110dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginEnd="5dp"
+                                android:padding="0dp"
+                                app:nb_backgroundColor="@color/color_secondry"
+                                app:nb_focusColor="@color/colorPrimary"
+                                app:nb_radius="25dp"
+                                app:nb_text="Upload"
+                                app:nb_textAllCaps="true"
+                                android:layout_weight="1"
+                                app:nb_textColor="#FFFFFF"
+                                app:nb_textSize="12sp" />
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/mediaSelectionView"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/view"
-                        android:layout_marginTop="10dp"
                         android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:weightSum="3"
+                        android:layout_below="@+id/placeHolderView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:visibility="visible">
 
-                        <com.ornach.nobobutton.NoboButton
-                            android:id="@+id/cancelPicture"
-                            android:layout_width="110dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="5dp"
+                        <RelativeLayout
+                            android:id="@+id/selectImageView"
+                            android:layout_width="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginEnd="5dp"
-                            android:padding="0dp"
-                            app:nb_backgroundColor="@color/quantum_googred"
-                            app:nb_focusColor="@color/error_background"
-                            app:nb_radius="25dp"
-                            app:nb_text="Cancel"
-                            app:nb_textAllCaps="true"
-                            app:nb_textColor="#FFFFFF"
-                            app:nb_textSize="12sp" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/rectangle_dashed"
+                            android:padding="10dp">
 
-                        <com.ornach.nobobutton.NoboButton
-                            android:id="@+id/uploadPicture"
-                            android:layout_width="110dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginEnd="5dp"
-                            android:padding="0dp"
-                            app:nb_backgroundColor="@color/color_secondry"
-                            app:nb_focusColor="@color/colorPrimary"
-                            app:nb_radius="25dp"
-                            app:nb_text="Upload"
-                            app:nb_textAllCaps="true"
+                            <ImageView
+                                android:id="@+id/selectImage"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_centerHorizontal="true"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_camera" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/selectImage"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/baloo_regular"
+                                android:text="Take Picture"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/selectImageFromGallaryView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
                             android:layout_weight="1"
-                            app:nb_textColor="#FFFFFF"
-                            app:nb_textSize="12sp" />
+                            android:background="@drawable/rectangle_dashed"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:id="@+id/selectImageFromGallary"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_gallery" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/baloo_regular"
+                                android:text="Open Gallary"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/rectangle_dashed"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:id="@+id/viewImage"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_centerHorizontal="true"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_upload"
+                                app:tint="@color/color_green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/viewImage"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/baloo_regular"
+                                android:text="Show Picture"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/mediaSelectionView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="3"
-                    android:layout_below="@+id/placeHolderView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:visibility="visible">
+                    android:layout_below="@+id/imageUploadView"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/selectImageView"
-                        android:layout_width="wrap_content"
+                    <com.ornach.nobobutton.NoboButton
+                        android:id="@+id/uploadImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/rectangle_dashed"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/selectImage"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_centerHorizontal="true"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ic_camera" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/selectImage"
-                            android:layout_centerHorizontal="true"
-                            android:fontFamily="@font/baloo_regular"
-                            android:text="Take Picture"
-                            android:textSize="16sp" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/selectImageFromGallaryView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rectangle_dashed"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/selectImageFromGallary"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="10dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_gallery" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-                            android:fontFamily="@font/baloo_regular"
-                            android:text="Open Gallary"
-                            android:textSize="16sp" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/rectangle_dashed"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/viewImage"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_centerHorizontal="true"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ic_upload"
-                            app:tint="@color/color_green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/viewImage"
-                            android:layout_centerHorizontal="true"
-                            android:fontFamily="@font/baloo_regular"
-                            android:text="Show Picture"
-                            android:textSize="16sp" />
-
-                    </RelativeLayout>
+                        android:visibility="gone"
+                        android:padding="0dp"
+                        app:nb_backgroundColor="#03A9F4"
+                        app:nb_focusColor="#00BCD4"
+                        app:nb_radius="25dp"
+                        app:nb_text="Upload Image"
+                        app:nb_textAllCaps="true"
+                        app:nb_textColor="#ffffff"
+                        app:nb_textSize="14sp" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageUploadView"
-                android:orientation="vertical">
-
-                <com.ornach.nobobutton.NoboButton
-                    android:id="@+id/uploadImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:padding="0dp"
-                    app:nb_backgroundColor="#03A9F4"
-                    app:nb_focusColor="#00BCD4"
-                    app:nb_radius="25dp"
-                    app:nb_text="Upload Image"
-                    app:nb_textAllCaps="true"
-                    app:nb_textColor="#ffffff"
-                    app:nb_textSize="14sp" />
-
-            </LinearLayout>
-
-            <!-- Leave Selection View -->
-            <RelativeLayout
-                android:id="@+id/leaveView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#B3000000"
-                android:visibility="gone">
-
+                <!-- Leave Selection View -->
                 <RelativeLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/all_corner_light_gray">
+                    android:id="@+id/leaveView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#B3000000"
+                    android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/selectionTitle"
-                        android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/color_secondry"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="10dp"
-                        android:text="Mark Leave"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        android:id="@+id/reasonView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/selectionTitle"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/corner_bg"
-                        android:orientation="vertical"
-                        android:padding="5dp">
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/all_corner_light_gray">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo_regular"
-                            android:paddingStart="4dp"
-                            android:paddingTop="4dp"
-                            android:text="Select Reason"
-                            android:textColor="@color/black" />
-
-                        <Spinner
-                            android:id="@+id/reasonSpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/dateView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/reasonView"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/corner_bg"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo_regular"
-                            android:paddingStart="4dp"
-                            android:paddingTop="4dp"
-                            android:text="Leave Date"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/date"
-                            android:fontFamily="@font/baloo_regular"
-                            android:textColor="@color/color_secondry"
-                            android:layout_width="match_parent"
-                            android:paddingStart="3dp"
-                            android:textSize="16sp"
-                            android:gravity="center_vertical"
-                            android:layout_height="40dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/remarksView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/dateView"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/corner_bg"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo_regular"
-                            android:paddingStart="4dp"
-                            android:paddingTop="4dp"
-                            android:text="Remarks"
-                            android:textColor="@color/black" />
-
-                        <EditText
-                            android:id="@+id/remarks"
-                            android:paddingStart="3dp"
+                            android:id="@+id/selectionTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="top|start"
-                            android:background="@color/transparent"
-                            android:inputType="textMultiLine"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/baloo_medium"
-                            android:lines="3"
-                            android:textColor="@color/color_secondry"
-                            android:maxLines="3"
-                            android:minLines="3"
-                            android:scrollbars="vertical" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/remarksView"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:weightSum="2">
-
-                        <com.skydoves.elasticviews.ElasticButton
-                            android:id="@+id/cancelButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="15dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/all_corner_cancel"
-                            android:drawableStart="@drawable/ic_cancel"
-                            android:drawableTint="@color/white"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
-                            android:text="Cancel"
-                            android:textColor="@color/white" />
-
-                        <com.skydoves.elasticviews.ElasticButton
-                            android:id="@+id/markLeave"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="15dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/all_corner_assign"
-                            android:drawableStart="@drawable/ic_cancel"
-                            android:drawableTint="@color/white"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
+                            android:background="@color/color_secondry"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="10dp"
                             android:text="Mark Leave"
-                            android:textColor="@color/white" />
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
-                    </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/reasonView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selectionTitle"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/corner_bg"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_regular"
+                                android:paddingStart="4dp"
+                                android:paddingTop="4dp"
+                                android:text="Select Reason"
+                                android:textColor="@color/black" />
+
+                            <Spinner
+                                android:id="@+id/reasonSpinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dateView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/reasonView"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/corner_bg"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_regular"
+                                android:paddingStart="4dp"
+                                android:paddingTop="4dp"
+                                android:text="Leave Date"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/date"
+                                android:fontFamily="@font/baloo_regular"
+                                android:textColor="@color/color_secondry"
+                                android:layout_width="match_parent"
+                                android:paddingStart="3dp"
+                                android:textSize="16sp"
+                                android:gravity="center_vertical"
+                                android:layout_height="40dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/remarksView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dateView"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/corner_bg"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_regular"
+                                android:paddingStart="4dp"
+                                android:paddingTop="4dp"
+                                android:text="Remarks"
+                                android:textColor="@color/black" />
+
+                            <EditText
+                                android:id="@+id/remarks"
+                                android:paddingStart="3dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="top|start"
+                                android:background="@color/transparent"
+                                android:inputType="textMultiLine"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/baloo_medium"
+                                android:lines="3"
+                                android:textColor="@color/color_secondry"
+                                android:maxLines="3"
+                                android:minLines="3"
+                                android:scrollbars="vertical" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/remarksView"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:weightSum="2">
+
+                            <com.skydoves.elasticviews.ElasticButton
+                                android:id="@+id/cancelButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/all_corner_cancel"
+                                android:drawableStart="@drawable/ic_cancel"
+                                android:drawableTint="@color/white"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:text="Cancel"
+                                android:textColor="@color/white" />
+
+                            <com.skydoves.elasticviews.ElasticButton
+                                android:id="@+id/markLeave"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/all_corner_assign"
+                                android:drawableStart="@drawable/ic_cancel"
+                                android:drawableTint="@color/white"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:text="Mark Leave"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:id="@+id/listmain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/search_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/all_corner_grey"
+                    android:padding="5dp">
+
+                    <EditText
+                        android:id="@+id/searchField"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_toLeftOf="@+id/cancel"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/baloo_regular"
+                        android:hint=""
+                        android:maxLines="1"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/cancel"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toLeftOf="@+id/line"
+                        android:src="@drawable/ic_round_circle"
+                        android:visibility="gone"
+                        app:tint="@color/color_secondry" />
+
+                    <View
+                        android:id="@+id/line"
+                        android:layout_width="1dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toLeftOf="@+id/search"
+                        android:background="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/search"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_search" />
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listrecycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/search_main"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+
 
         </RelativeLayout>
 

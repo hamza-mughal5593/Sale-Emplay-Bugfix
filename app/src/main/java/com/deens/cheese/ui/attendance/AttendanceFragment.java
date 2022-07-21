@@ -34,6 +34,8 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -58,8 +60,13 @@ import androidx.biometric.BiometricManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.deens.cheese.Adapter.CourseAdapter;
+import com.deens.cheese.CustomerClass;
 import com.deens.cheese.FileUtils;
+import com.deens.cheese.MappedCustomerView;
 import com.deens.cheese.R;
 import com.deens.cheese.ViewImages;
 import com.deens.cheese.databinding.FragmentAttendenceBinding;
@@ -199,6 +206,11 @@ public class AttendanceFragment extends Fragment implements
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAttendenceBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        customerSpinner = root.findViewById(R.id.customerSpinner);
+        customerView = root.findViewById(R.id.customerView);
+        listmain = root.findViewById(R.id.listmain);
+        listrecycler = root.findViewById(R.id.listrecycler);
+
         parentView = root.findViewById(R.id.parentView);
         loadingView = root.findViewById(R.id.loadingView);
         listView = root.findViewById(R.id.listView);
@@ -373,7 +385,18 @@ public class AttendanceFragment extends Fragment implements
                 SnackAlert.error(parentView, "INTERNET NOT FOUND");
             }
         });
+        new BackgroundColorAnimation().
+                init(parentView).
+                setEnterAnimDuration(3000).// long
+                setExitAnimDuration(3000).// long
+                start();
 
+        if (isNetworkAvailable()) {
+            GetMappedCustomers task = new GetMappedCustomers();
+            task.execute();
+        } else {
+            SnackAlert.error(root.findViewById(android.R.id.content), "Internet not available!");
+        }
         return root;
     }
 
@@ -405,6 +428,233 @@ public class AttendanceFragment extends Fragment implements
         }
     }
 
+
+
+
+    ArrayList<CustomerClass> customers = new ArrayList<>();
+    String selectedCustomerID = "";
+    TextView customerSpinner;
+    RelativeLayout customerView;
+    RelativeLayout listmain;
+    RecyclerView listrecycler;
+    CourseAdapter adapter;
+    private class GetMappedCustomers extends AsyncTask<Void, Void, Void> {
+
+        String methodName = "KeyAccount/GetMapedCustomer?UserID=" + userClass.getUserID();
+
+        @Override
+        protected void onPreExecute() {
+            message = "";
+            messageDetail = "";
+            loadingView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg) {
+            try {
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder()
+                        .url(URL + methodName)
+                        .get()
+                        .addHeader(KEY_NAME, API_KEY)
+                        .build();
+
+                Response response = client.newCall(request).execute();
+                String networkResp = response.body().string();
+                parseJSONStringToJSONObject_list(networkResp, "Customer");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                message = "Error";
+                messageDetail = "Some error occurred";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void a) {
+            if (!getActivity().isFinishing()) {
+                loadingView.setVisibility(View.GONE);
+                if (!message.equals("")) {
+                    // Show some message from server
+                    Toast.makeText(getActivity(), "Customers not found", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (customers.size() > 0){
+                        selectedCustomerID = String.valueOf(customers.get(0).getCustomerID());
+                        ArrayList<String> names = new ArrayList<>();
+                        for (int i = 0; i < customers.size(); i++) {
+                            names.add(customers.get(i).getCustomerName());
+                        }
+
+                        if (names.size()>0){
+                            customerSpinner.setText(names.get(0));
+                            customerSpinner.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    customerView.setVisibility(View.GONE);
+                                    listmain.setVisibility(View.VISIBLE);
+                                    setlist(names);
+                                }
+                            });
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    private void setlist(ArrayList<String> names){
+
+
+
+        // initializing our variables.
+
+        // calling method to
+        // build recycler view.
+        buildRecyclerView(names);
+
+
+
+        EditText searchView = binding.searchField;
+
+        // below line is to call set on query text listener method.
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s,names);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                // inside on query text change method we are
+//                // calling a method to filter our recycler view.
+//
+//                return false;
+//            }
+//        });
+    }
+
+    private void filter(CharSequence text,ArrayList<String> data) {
+        // creating a new array list to filter our data.
+        ArrayList<String> filteredlist = new ArrayList<>();
+
+        // running a for loop to compare elements.
+        for (String item : data) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.toLowerCase().contains(text)) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredlist.add(item);
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(getActivity(), "No Data Found..", Toast.LENGTH_SHORT).show();
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            adapter.filterList(filteredlist);
+        }
+    }
+    private void buildRecyclerView(ArrayList<String> names) {
+
+        // below line we are creating a new array list
+
+
+        // initializing our adapter class.
+        adapter = new CourseAdapter(names, getActivity(), new CourseAdapter.AdapterCallback() {
+            @Override
+            public void add_data(int pos, String holder) {
+                selectedCustomerID = String.valueOf(customers.get(pos).getCustomerID());
+                customerView.setVisibility(View.VISIBLE);
+                listmain.setVisibility(View.GONE);
+
+                if (names.size()>0){
+                    customerSpinner.setText(holder);
+                }
+
+            }
+        });
+
+        // adding layout manager to our recycler view.
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        listrecycler.setHasFixedSize(true);
+
+        // setting layout manager
+        // to our recycler view.
+        listrecycler.setLayoutManager(manager);
+
+        // setting adapter to
+        // our recycler view.
+        listrecycler.setAdapter(adapter);
+    }
+
+
+
+    private void parseJSONStringToJSONObject_list(String networkResp, String methodName) {
+        if (methodName.equals("Customer")) {
+            try {
+                JSONArray jsonArray = new JSONArray(networkResp);
+                if (jsonArray.length() > 0){
+                    if (!jsonArray.getJSONObject(0).getString("CustomerCode").equals("null")){
+                        customers.clear();
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            customers.add(new CustomerClass(jsonObject.getInt("CustomerID"),
+                                    jsonObject.getString("CustomerCode"),
+                                    jsonObject.getString("CustomerName"),
+                                    jsonObject.getInt("CityID"),
+                                    jsonObject.getString("CityName"),
+                                    jsonObject.getString("Area"),
+                                    jsonObject.getString("Address"),
+                                    jsonObject.getString("Mobile"),
+                                    jsonObject.getString("Mobile1")
+                            ));
+                        }
+                    }else {
+                        message = "Deen's Cheese";
+                        messageDetail = "No customer found!";
+                    }
+                }else {
+                    message = "Deen's Cheese";
+                    messageDetail = "No customer found!";
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+
+
+
     private class MarkAttendance extends AsyncTask<Void, Void, Void> {
 
         String methodName = "Auth/MarkAttendance?";
@@ -428,7 +678,9 @@ public class AttendanceFragment extends Fragment implements
                         .url(URL + methodName + "LoginUserID=" + URLEncoder.encode(loggedInUserId, "UTF-8")
                                 + "&Lat=" + lat
                                 + "&Long=" + lng
-                                + "&Location=" + URLEncoder.encode(loc, "UTF-8"))
+                                + "&Location=" + URLEncoder.encode(loc, "UTF-8")
+                                + "&StoreID" + selectedCustomerID)
+
                         .method("POST", body)
                         .addHeader(KEY_NAME, API_KEY)
                         .build();
@@ -519,7 +771,7 @@ public class AttendanceFragment extends Fragment implements
 
     private class UploadImageTask extends AsyncTask<Void, Void, Void> {
 
-        String methodName = "KeyAccount/AddNewImage?LoginUserID=" + userClass.getUserID();
+        String methodName = "KeyAccount/AddNewImage?LoginUserID=" + userClass.getUserID() + "&StoreID" + selectedCustomerID;
 
         @Override
         protected void onPreExecute() {
