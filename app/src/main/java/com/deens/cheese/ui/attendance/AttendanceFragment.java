@@ -397,9 +397,34 @@ public class AttendanceFragment extends Fragment implements
         } else {
             SnackAlert.error(root.findViewById(android.R.id.content), "Internet not available!");
         }
+
+
+
+
+        Spinner spin = (Spinner) root.findViewById(R.id.attendsSpinner);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                attends_type =  attend_type[i];
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,attend_type);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
+
         return root;
     }
-
+    String[] attend_type = {  "Check-In", "Check-Out"};
+String attends_type = "Check-In";
     private void loadPreferences() {
         Gson gson = new Gson();
         String json = preferences.getString("User", "");
@@ -679,7 +704,8 @@ public class AttendanceFragment extends Fragment implements
                                 + "&Lat=" + lat
                                 + "&Long=" + lng
                                 + "&Location=" + URLEncoder.encode(loc, "UTF-8")
-                                + "&StoreID" + selectedCustomerID)
+                                + "&StoreID=" + Integer.parseInt(selectedCustomerID)
+                                + "&AttenType=" + attends_type)
 
                         .method("POST", body)
                         .addHeader(KEY_NAME, API_KEY)
@@ -739,7 +765,9 @@ public class AttendanceFragment extends Fragment implements
                                 + "&Remarks=" + URLEncoder.encode(remarks.getText().toString().trim(), "UTF-8")
                                 + "&Lat=" + lat
                                 + "&Long=" + lng
-                                + "&Location=" + URLEncoder.encode(loc, "UTF-8"))
+                                + "&Location=" + URLEncoder.encode(loc, "UTF-8")
+                                + "&StoreID=" + Integer.parseInt(selectedCustomerID)
+                        )
                         .method("POST", body)
                         .addHeader(KEY_NAME, API_KEY)
                         .build();
@@ -771,7 +799,7 @@ public class AttendanceFragment extends Fragment implements
 
     private class UploadImageTask extends AsyncTask<Void, Void, Void> {
 
-        String methodName = "KeyAccount/AddNewImage?LoginUserID=" + userClass.getUserID() + "&StoreID" + selectedCustomerID;
+        String methodName = "KeyAccount/AddNewImage?LoginUserID=" + userClass.getUserID() + "&StoreID=" + Integer.parseInt(selectedCustomerID);
 
         @Override
         protected void onPreExecute() {

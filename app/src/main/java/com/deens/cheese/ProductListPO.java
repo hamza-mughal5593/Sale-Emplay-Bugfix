@@ -101,6 +101,8 @@ public class ProductListPO extends AppCompatActivity {
     String loggedInUserId = "0";
     UserClass userClass;
     String selectedCustomerID = "";
+    String selecteddate = "";
+
     RecyclerView listView;
 
     NoboButton place;
@@ -133,6 +135,7 @@ public class ProductListPO extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         selectedCustomerID = getIntent().getExtras().getString("CID", "");
+        selecteddate = getIntent().getExtras().getString("dated", "");
         parentView = findViewById(R.id.parentView);
         remarks = findViewById(R.id.remarks);
         loadingView = findViewById(R.id.loadingView);
@@ -330,7 +333,7 @@ public class ProductListPO extends AppCompatActivity {
             Date c = Calendar.getInstance().getTime();
 
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            invoiceDate = df.format(c);
+            invoiceDate = selecteddate;
         }
 
         @Override

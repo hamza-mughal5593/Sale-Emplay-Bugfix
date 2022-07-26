@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,23 +20,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deens.cheese.Adapter.CourseAdapter;
 import com.deens.cheese.databinding.FragmentPreinvoiceBinding;
-import com.deens.cheese.ui.preinvoice.PreInvoiceFragment;
 import com.google.gson.Gson;
 import com.inihood.backgroundcoloranimation.BackgroundColorAnimation;
 import com.ornach.nobobutton.NoboButton;
@@ -49,10 +45,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
-
-import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 
 public class MappedCustomerView extends AppCompatActivity {
 
@@ -76,6 +73,9 @@ public class MappedCustomerView extends AppCompatActivity {
     String whatToGenerate = "";
     RelativeLayout listmain;
     LinearLayout customerView;
+
+    final Calendar myCalendar= Calendar.getInstance();
+    EditText selectdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,11 +115,11 @@ public class MappedCustomerView extends AppCompatActivity {
         preInvoice.setOnClickListener(view -> {
             if (whatToGenerate.contains("Purchase Order")){
                 startActivity(new Intent(MappedCustomerView.this, ProductListPO.class)
-                        .putExtra("CID", selectedCustomerID));
+                        .putExtra("CID", selectedCustomerID).putExtra("dated",selectdate.getText().toString()));
                 finish();
             }else {
                 startActivity(new Intent(MappedCustomerView.this, ProductListDailySale.class)
-                        .putExtra("CID", selectedCustomerID));
+                        .putExtra("CID", selectedCustomerID).putExtra("dated",selectdate.getText().toString()));
                 finish();
             }
         });
@@ -127,8 +127,32 @@ public class MappedCustomerView extends AppCompatActivity {
         preInvoice.setText(whatToGenerate);
 
         back.setOnClickListener(view -> onBackPressed());
-    }
 
+
+
+        selectdate =(EditText) findViewById(R.id.selectdate);
+        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                updateLabel();
+            }
+        };
+        selectdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(MappedCustomerView.this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+    }
+    private void updateLabel(){
+        String myFormat="yyyy-MM-dd";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        selectdate.setText(dateFormat.format(myCalendar.getTime()));
+    }
 
     @Override
     public void onBackPressed() {
